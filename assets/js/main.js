@@ -32,6 +32,12 @@ const navPagesAndLinks = [
         path: "contact.html",
         isDdl: false
     },
+    {
+        id: 5,
+        name: "Login/Sign up",
+        path: "#",
+        isDdl: false,
+    }
 ]
 
 
@@ -79,7 +85,6 @@ document.querySelector("#burger").addEventListener("click", () => {
 })
 
 // nav logo
-
 const navigationLogo = [
     {
         id: 1,
@@ -96,3 +101,9 @@ navLogoLink.setAttribute("href", "index.html");
 navLogoLink.innerText="BookWise";
 navigation.appendChild(navLogo)
 navLogo.appendChild(navLogoLink);
+
+// shopping cart
+
+const shoppingCart = document.createElement("i");
+shoppingCart.classList.add("fa-solid", "fa-cart-shopping")
+navigation.appendChild(shoppingCart);
