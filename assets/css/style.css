@@ -123,7 +123,15 @@ nav{
     transform: translate(-50%, -50%);
     background-color: #181818; 
 }
-
-.LoginSignUpButtons{
-   padding: 10px 50px;
+.loginSignUpButtonsDiv{
+    width: fit-content;
+    margin: 2% auto;
 }
+.loginSignUpButtonsDiv input{
+   padding: 10px 50px;
+   cursor: pointer;
+}
+.loginSignUpButtonsDiv input.active{
+    background-color: green;
+    cursor: auto;
+ }

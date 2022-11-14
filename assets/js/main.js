@@ -135,25 +135,50 @@ const loginOrSignUpButtons = [
         id: 1,
         value: "Login",
         idAttribute: "LoginButton",
+        innerHTML: "Marija",
     },
     {
         id: 2,
         value: "Sign up",
         idAttribute: "SignUpButton",
+        innerHeight: "Jana"
     },
 ]
 function createModal(){
+    // creating a modal
     var modal = document.createElement("div");
     modal.setAttribute("id", "loginSignUpModal");
+
+    //making buttons div
+    var buttonsDiv = document.createElement("div");
+    buttonsDiv.classList.add("loginSignUpButtonsDiv");
+
+    //making buttons
+    modal.appendChild(buttonsDiv);
     loginOrSignUpButtons.forEach(item => {
         var button = document.createElement("input");
         button.type = "button";
-        button.classList.add("LoginSignUpButtons")
+        button.classList.add("loginSignUpButtons")
         button.setAttribute("id", item.idAttribute);
         button.value = item.value;
-        modal.appendChild(button)
+        buttonsDiv.appendChild(button)
+        buttonsDiv.firstElementChild.classList.add("active");
     })
     bodyTag.appendChild(modal);
+
+    // presenting data based on which button is active
+    document.querySelectorAll(".loginSignUpButtons").forEach(element => {
+        element.addEventListener("click", () => {
+            // finding the currently active button
+            var currentlyActiveButton = document.querySelector(".loginSignUpButtons.active");
+            //if the active button is different than the clicked element, we remove the active class from the active button
+            if(currentlyActiveButton && currentlyActiveButton!==element){
+                currentlyActiveButton.classList.remove("active");
+            }
+            //adding an active class to the current element
+            element.classList.add("active");
+        })
+    })
 }
 
 var loginSignUpModal = document.querySelector("#loginSignUpModalButton");
@@ -163,17 +188,4 @@ loginSignUpModal.addEventListener("click", () => {
     var modal = document.querySelector("#loginSignUpModal");
     modal.classList.add("active");
     console.log("otvoreno");
-    // openOrCloseLoginSignUpModal();
 })
-
-
-
-// function openOrCloseLoginSignUpModal(){
-//     var modal = document.querySelector("#loginSignUpModal");
-//     if(!modal.classList.contains("active")){
-//         modal.classList.add("active");
-//     }
-//     else{
-//         modal.classList.remove("active");
-//     }
-// }
