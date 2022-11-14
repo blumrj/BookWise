@@ -112,3 +112,13 @@ nav{
 #burger.active .burger-line:nth-child(3){
     transform: rotate(-45deg);
 }
+
+/* login sign up modal */
+#loginSignUpModal{
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+    background-color: #181818;
+}

@@ -54,42 +54,56 @@ const ul = document.createElement("ul");
 ul.setAttribute("id", "navUl")
 navigation.appendChild(ul);
 
-window.addEventListener("DOMContentLoaded", () => {
-    let pagesAndLinks = navPagesAndLinks.map(item => {
-        // var liTag = document.createElement("li");
-        // var aTag = document.createElement("a");
-        // aTag.href = item.path;
-        // aTag.innerHTML = item.name;
-        // liTag.appendChild(aTag);
-        if(item.path=='#'){
-            var liString = `<li><a href='${item.path}' id='loginSignUpModal'>${item.name}</a></li>`;
-            return liString;
-        }
-        var liString = `<li><a href='${item.path}'>${item.name}</a></li>`;
-        return liString;
-    })
-    ul.innerHTML = pagesAndLinks.join("");
+// window.addEventListener("DOMContentLoaded", () => {
+//     let pagesAndLinks = navPagesAndLinks.map(item => {
+//         var liTag = document.createElement("li");
+//         var aTag = document.createElement("a");
+//         aTag.href = item.path;
+//         aTag.innerHTML = item.name;
+//         liTag.appendChild(aTag);
+//         ul.appendChild(liTag)
+//         if(item.path=='#'){
+//             aTag.setAttribute("id", "loginSignUpModal")
+//         }
+//         // var liString = `<li><a href='${item.path}'>${item.name}</a></li>`;
+//         return liTag;
+//     })
+//     // ul.innerHTML = pagesAndLinks.join("");
+// })
+
+navPagesAndLinks.forEach(item => {
+    var liTag = document.createElement("li");
+    var aTag = document.createElement("a");
+    aTag.href = item.path;
+    aTag.innerHTML = item.name;
+    liTag.appendChild(aTag);
+    ul.appendChild(liTag)
+    if(item.path=='#'){
+        liTag.setAttribute("id", "loginSignUpModalButton");
+    }
 })
 
-var loginSignUpModal = document.querySelector("#loginSignUpModal");
-console.log(loginSignUpModal)
-
-console.log(document.getElementsByTagName(ul));
 
 //mobile navigation 
-var isOpen = false;
+function mobileNavigation(){
+
+        var burger = document.querySelector("#burger");
+        var navUl =  document.querySelector("#navUl");
+
+        if(!navUl.classList.contains("active")){
+            burger.classList.add("active");
+            navUl.classList.add("active");
+        }
+        else{
+            burger.classList.remove("active");
+            navUl.classList.remove("active");
+        }
+}
+
 document.querySelector("#burger").addEventListener("click", () => {
-    if(!isOpen){
-        document.querySelector("#burger").classList.add("active");
-        document.querySelector("#navUl").classList.add("active");
-        isOpen = true;
-    }
-    else{
-        document.querySelector("#burger").classList.remove("active");
-        document.querySelector("#navUl").classList.remove("active");
-        isOpen = false;
-    }
+    mobileNavigation()
 })
+
 
 // nav logo
 const navigationLogo = [
@@ -114,3 +128,19 @@ navLogo.appendChild(navLogoLink);
 const shoppingCart = document.createElement("i");
 shoppingCart.classList.add("fa-solid", "fa-cart-shopping")
 navigation.appendChild(shoppingCart);
+
+// login sign up modal
+var loginSignUpModal = document.querySelector("#loginSignUpModalButton");
+console.log(loginSignUpModal);
+loginSignUpModal.addEventListener("click", () => {
+    console.log("otvoreno");
+    mobileNavigation()
+    createModal()
+})
+
+function createModal(){
+    var div = document.createElement("div");
+    div.setAttribute("id", "loginSignUpModal")
+    bodyTag.appendChild(div);
+    console.log("uradjeno")
+}
