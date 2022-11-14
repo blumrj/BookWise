@@ -12,31 +12,26 @@ const navPagesAndLinks = [
         id: 1,
         name: "Home",
         path: "index.html",
-        isDdl: false,
     },
     {
         id: 2,
         name: "Products",
         path: "products.html",
-        isDdl: true,
     },
     {
         id: 3,
         name: "About us",
         path: "aboutUs.html",
-        isDdl: false,
     },
     {
         id: 4,
         name: "Contact",
         path: "contact.html",
-        isDdl: false
     },
     {
         id: 5,
         name: "Login/Sign up",
         path: "#",
-        isDdl: false,
     }
 ]
 
@@ -61,13 +56,25 @@ navigation.appendChild(ul);
 
 window.addEventListener("DOMContentLoaded", () => {
     let pagesAndLinks = navPagesAndLinks.map(item => {
-        // if(item.isDdl){
-        //     return ``;
-        // }
-        return `<li><a href='${item.path}'>${item.name}</a></li>`;
+        // var liTag = document.createElement("li");
+        // var aTag = document.createElement("a");
+        // aTag.href = item.path;
+        // aTag.innerHTML = item.name;
+        // liTag.appendChild(aTag);
+        if(item.path=='#'){
+            var liString = `<li><a href='${item.path}' id='loginSignUpModal'>${item.name}</a></li>`;
+            return liString;
+        }
+        var liString = `<li><a href='${item.path}'>${item.name}</a></li>`;
+        return liString;
     })
     ul.innerHTML = pagesAndLinks.join("");
 })
+
+var loginSignUpModal = document.querySelector("#loginSignUpModal");
+console.log(loginSignUpModal)
+
+console.log(document.getElementsByTagName(ul));
 
 //mobile navigation 
 var isOpen = false;
