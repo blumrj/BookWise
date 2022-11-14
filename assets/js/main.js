@@ -85,7 +85,7 @@ navPagesAndLinks.forEach(item => {
 
 
 //mobile navigation 
-function mobileNavigation(){
+function openOrCloseMobileNavigation(){
 
         var burger = document.querySelector("#burger");
         var navUl =  document.querySelector("#navUl");
@@ -101,9 +101,8 @@ function mobileNavigation(){
 }
 
 document.querySelector("#burger").addEventListener("click", () => {
-    mobileNavigation()
+    openOrCloseMobileNavigation()
 })
-
 
 // nav logo
 const navigationLogo = [
@@ -130,17 +129,51 @@ shoppingCart.classList.add("fa-solid", "fa-cart-shopping")
 navigation.appendChild(shoppingCart);
 
 // login sign up modal
+
+const loginOrSignUpButtons = [
+    {
+        id: 1,
+        value: "Login",
+        idAttribute: "LoginButton",
+    },
+    {
+        id: 2,
+        value: "Sign up",
+        idAttribute: "SignUpButton",
+    },
+]
+function createModal(){
+    var modal = document.createElement("div");
+    modal.setAttribute("id", "loginSignUpModal");
+    loginOrSignUpButtons.forEach(item => {
+        var button = document.createElement("input");
+        button.type = "button";
+        button.classList.add("LoginSignUpButtons")
+        button.setAttribute("id", item.idAttribute);
+        button.value = item.value;
+        modal.appendChild(button)
+    })
+    bodyTag.appendChild(modal);
+}
+
 var loginSignUpModal = document.querySelector("#loginSignUpModalButton");
-console.log(loginSignUpModal);
 loginSignUpModal.addEventListener("click", () => {
+    openOrCloseMobileNavigation()
+    createModal();
+    var modal = document.querySelector("#loginSignUpModal");
+    modal.classList.add("active");
     console.log("otvoreno");
-    mobileNavigation()
-    createModal()
+    // openOrCloseLoginSignUpModal();
 })
 
-function createModal(){
-    var div = document.createElement("div");
-    div.setAttribute("id", "loginSignUpModal")
-    bodyTag.appendChild(div);
-    console.log("uradjeno")
-}
+
+
+// function openOrCloseLoginSignUpModal(){
+//     var modal = document.querySelector("#loginSignUpModal");
+//     if(!modal.classList.contains("active")){
+//         modal.classList.add("active");
+//     }
+//     else{
+//         modal.classList.remove("active");
+//     }
+// }
