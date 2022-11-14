@@ -134,16 +134,18 @@ const loginOrSignUpButtons = [
     {
         id: 1,
         value: "Login",
-        idAttribute: "LoginButton",
+        idAttribute: "loginButton",
         innerHTML: "Marija",
     },
     {
         id: 2,
         value: "Sign up",
-        idAttribute: "SignUpButton",
+        idAttribute: "signUpButton",
         innerHeight: "Jana"
     },
 ]
+
+
 function createModal(){
     // creating a modal
     var modal = document.createElement("div");
@@ -167,6 +169,10 @@ function createModal(){
     bodyTag.appendChild(modal);
 
     // presenting data based on which button is active
+    toggleLoginSignUpButtons();
+}
+
+function toggleLoginSignUpButtons(){
     document.querySelectorAll(".loginSignUpButtons").forEach(element => {
         element.addEventListener("click", () => {
             // finding the currently active button
@@ -186,6 +192,6 @@ loginSignUpModal.addEventListener("click", () => {
     openOrCloseMobileNavigation()
     createModal();
     var modal = document.querySelector("#loginSignUpModal");
-    modal.classList.add("active");
+    modal.classList.toggle("active");
     console.log("otvoreno");
 })
