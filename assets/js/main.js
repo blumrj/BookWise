@@ -35,7 +35,6 @@ const navPagesAndLinks = [
     }
 ]
 
-
 const navigation = document.getElementsByTagName("nav")[0];
 navigation.classList.add("nav-container", "d-flex", "flex-wrap", "justify-content-between", "align-items-center", "uppercase", "nav-dark");
 
@@ -54,23 +53,6 @@ const ul = document.createElement("ul");
 ul.setAttribute("id", "navUl")
 navigation.appendChild(ul);
 
-// window.addEventListener("DOMContentLoaded", () => {
-//     let pagesAndLinks = navPagesAndLinks.map(item => {
-//         var liTag = document.createElement("li");
-//         var aTag = document.createElement("a");
-//         aTag.href = item.path;
-//         aTag.innerHTML = item.name;
-//         liTag.appendChild(aTag);
-//         ul.appendChild(liTag)
-//         if(item.path=='#'){
-//             aTag.setAttribute("id", "loginSignUpModal")
-//         }
-//         // var liString = `<li><a href='${item.path}'>${item.name}</a></li>`;
-//         return liTag;
-//     })
-//     // ul.innerHTML = pagesAndLinks.join("");
-// })
-
 navPagesAndLinks.forEach(item => {
     var liTag = document.createElement("li");
     var aTag = document.createElement("a");
@@ -86,7 +68,6 @@ navPagesAndLinks.forEach(item => {
 
 //mobile navigation 
 function openOrCloseMobileNavigation(){
-
         var burger = document.querySelector("#burger");
         var navUl =  document.querySelector("#navUl");
 
@@ -135,26 +116,22 @@ const loginOrSignUpButtons = [
         id: 1,
         value: "Login",
         idAttribute: "loginButton",
-        innerHTML: "Marija",
     },
     {
         id: 2,
         value: "Sign up",
         idAttribute: "signUpButton",
-        innerHeight: "Jana"
     },
 ]
-
 
 function createModal(){
     // creating a modal
     var modal = document.createElement("div");
     modal.setAttribute("id", "loginSignUpModal");
-
+    modal.classList.toggle("active")
     //making buttons div
     var buttonsDiv = document.createElement("div");
     buttonsDiv.classList.add("loginSignUpButtonsDiv");
-
     //making buttons
     modal.appendChild(buttonsDiv);
     loginOrSignUpButtons.forEach(item => {
@@ -168,8 +145,24 @@ function createModal(){
     })
     bodyTag.appendChild(modal);
 
+    // creating a form
+    var loginSignUpForm = document.createElement("form");
+    loginSignUpForm.id = "loginSignUpForm";
+    loginSignUpForm.name = "loginSignUpForm";
+    //input
+    var formDiv = "<div class='formDiv d-flex flex-direction-column'><label for='inputTextLogin'>Username:</label><input type='text' id='inputTextLogin' name='inputTextLogin'/></div><div class='formDiv d-flex flex-direction-column'><label for='inputPasswordLogin'>Password:</label><input type='password' id='inputPasswordLogin' name='inputPasswordLogin'/></div>";
+    loginSignUpForm.innerHTML = formDiv;
+    modal.appendChild(loginSignUpForm);
     // presenting data based on which button is active
     toggleLoginSignUpButtons();
+
+    var exitButton = document.createElement("span");
+    exitButton.setAttribute("id", "closeLoginSignUpModalButton")
+    exitButton.innerHTML = "";
+
+    modal.appendChild(exitButton);
+
+    closeLoginSignUpModal()
 }
 
 function toggleLoginSignUpButtons(){
@@ -177,9 +170,18 @@ function toggleLoginSignUpButtons(){
         element.addEventListener("click", () => {
             // finding the currently active button
             var currentlyActiveButton = document.querySelector(".loginSignUpButtons.active");
+            var signUpButton = document.querySelector("#signUpButton");
+            var loginSignUpForm = document.querySelector("#loginSignUpForm");
             //if the active button is different than the clicked element, we remove the active class from the active button
             if(currentlyActiveButton && currentlyActiveButton!==element){
                 currentlyActiveButton.classList.remove("active");
+                if(element==signUpButton){
+                    console.log("isti");
+                    loginSignUpForm.innerHTML = "<div class='formDiv d-flex flex-direction-column'><label for='inputTextLogin'>Username:</label><input type='text' id='inputTextLogin' name='inputTextLogin'/></div>";
+                }
+                else{
+                    loginSignUpForm.innerHTML = "<div class='formDiv d-flex flex-direction-column'><label for='inputTextLogin'>Username:</label><input type='text' id='inputTextLogin' name='inputTextLogin'/></div><div class='formDiv d-flex flex-direction-column'><label for='inputPasswordLogin'>Password:</label><input type='password' id='inputPasswordLogin' name='inputPasswordLogin'/></div>";
+                }
             }
             //adding an active class to the current element
             element.classList.add("active");
@@ -187,11 +189,15 @@ function toggleLoginSignUpButtons(){
     })
 }
 
-var loginSignUpModal = document.querySelector("#loginSignUpModalButton");
-loginSignUpModal.addEventListener("click", () => {
+var loginSignUpModalButton = document.querySelector("#loginSignUpModalButton");
+loginSignUpModalButton.addEventListener("click", () => {
     openOrCloseMobileNavigation()
     createModal();
-    var modal = document.querySelector("#loginSignUpModal");
-    modal.classList.toggle("active");
     console.log("otvoreno");
 })
+
+function closeLoginSignUpModal(){
+    document.querySelector("#closeLoginSignUpModalButton").addEventListener("click", () => {
+        document.querySelector("#loginSignUpModal").classList.remove("active")
+    })
+}
