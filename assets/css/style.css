@@ -114,7 +114,7 @@ nav{
 }
 
 /* login sign up modal */
-#loginSignUpModal.active{
+#loginSignUpModal{
     position: absolute;
     width: 50vw;
     height: 50vh;
@@ -123,15 +123,15 @@ nav{
     transform: translate(-50%, -50%);
     background-color: #181818; 
 }
-.loginSignUpButtonsDiv{
+#loginSignUpButtonsDiv{
     width: fit-content;
     margin: 2% auto;
 }
-.loginSignUpButtonsDiv input{
+#loginSignUpButtonsDiv input{
    padding: 10px 50px;
    cursor: pointer;
 }
-.loginSignUpButtonsDiv input.active{
+#loginSignUpButtonsDiv input.active{
     background-color: green;
     cursor: auto;
  }
