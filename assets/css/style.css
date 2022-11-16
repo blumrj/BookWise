@@ -1,6 +1,9 @@
 :root{
     --gray: #181818;
-    --bez: white;
+    --beige: #FFD9CE;
+    --red: #a31b1b;
+    --red: #DB5461;
+    --red: #612940;
 }
 *{
     margin: 0;
@@ -8,10 +11,20 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
+    color: var(--beige);
+}
+a{
+    color: var(--beige);
 }
 /* color classes */
 .black-bg{
     background-color: #181818;
+}
+.beige-bg{
+    background-color: var(--beige);
+}
+.red-bg{
+    background-color: var(--red);
 }
 /* flex classes */
 .d-flex{
@@ -40,7 +53,7 @@
     padding: 10px 10%;
     margin: auto;
     height: 45px;
-    background-color: aquamarine;
+    background-color: var(--red);
 }
 .container{
     padding: 0 10%;
@@ -63,7 +76,7 @@ nav{
     height: 100vh;
     transform: translateX(-100%);
     transition: all 300ms ease;
-    background-color: #181818;
+    background-color: var(--red);
 }
 #navUl.active{
     transform: translateX(0%);
@@ -73,7 +86,7 @@ nav{
 #navUl li{
     margin: 10px 0px;
     padding: 10px 20px;
-    background-color: aqua;
+    /* background-color: var(--red); */
 }
 /* buger */
 #burger{
@@ -92,7 +105,7 @@ nav{
     height: 3px;
     border-radius: 5px;
     transition: transform .5s ease-in-out, background-color .3s ease-in-out, width 0.3s ease;
-    background-color: #181818;
+    background-color: var(--beige);
 }
 .burger-line:nth-child(1){
     transform: translateY(-8px);
@@ -115,33 +128,81 @@ nav{
 
 /* login sign up modal */
 #loginSignUpModal{
-    position: absolute;
-    width: 50vw;
-    height: 50vh;
+    height: 0;
+    overflow: hidden;
+}
+#loginSignUpModal.active{
+    overflow: visible;
+    transition: height 0.2s ease-in-out;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #181818; 
+    z-index: 10;
+    background-color: var(--red);
+    color: black;
+    box-shadow: 0 0 6px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    
+    width: 380px;
+    padding: 5px;
 }
 #loginSignUpButtonsDiv{
-    width: fit-content;
-    margin: 2% auto;
+    width: 60%;
+    margin: 35px auto;
+    background-color: aliceblue;
+    box-shadow: 0 0 20px 0px #181818;
+    border-radius: 30px;
+    position: relative;
 }
 #loginSignUpButtonsDiv input{
-   padding: 10px 50px;
+    width: 50%;
+   padding: 10px 30px;
+   background: transparent;
+   border: 0;
+   outline: none;
+   position: relative;
+   border-radius: 30px;
    cursor: pointer;
+   transition: .3s;
+   color: var(--red);
+
 }
 #loginSignUpButtonsDiv input.active{
-    background-color: green;
+    background-color: var(--beige);
+    color: var(--red);
     cursor: auto;
  }
+ #loginSignUpForm{
+    width: 80%;
+    margin: auto;
+ }
+ #loginSignUpForm .input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border: 0;
+    border-bottom: 1px solid;
+    outline: none;
+    background: transparent;
+ }
+ .modalButton{
+    width: 50%;
+    padding: 10px 30px;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    margin:  20px auto;
+    background-color: var(--beige);
+    color: var(--red);
+ }
  #closeLoginSignUpModalButton::before{
-    content: "marija";
+    content: "x";
  }
  #closeLoginSignUpModalButton{
     cursor: pointer;
-    color: aliceblue;
+    transition: height 0.2s ease-in-out;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 2%;
+    right: 4%;
  }

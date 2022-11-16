@@ -85,6 +85,8 @@ document.querySelector("#burger").addEventListener("click", () => {
     openOrCloseMobileNavigation()
 })
 
+
+
 // nav logo
 const navigationLogo = [
     {
@@ -111,93 +113,47 @@ navigation.appendChild(shoppingCart);
 
 // login sign up modal
 
-const loginOrSignUpButtons = [
-    {
-        id: 1,
-        value: "Login",
-        idAttribute: "loginButton",
-    },
-    {
-        id: 2,
-        value: "Sign up",
-        idAttribute: "signUpButton",
-    },
-]
-
 var modal = document.createElement("div");
 modal.setAttribute("id", "loginSignUpModal");
-        modal.innerHTML = "<div id='loginSignUpModal'><span id='closeLoginSignUpModalButton'></span><div id='loginSignUpButtonsDiv'><input type='button' id='loginButton' class='loginSignUpButtons active' value='Login'/><input type='button' id='signUpButton' class='loginSignUpButtons' value='Sign Up'/></div><div><form id='loginSignUpForm' name='loginSignUpForm' ></form></div></div>";
+
+modal.innerHTML = "<span id='closeLoginSignUpModalButton'></span><div id='loginSignUpButtonsDiv'><div id='buttonColor'></div><input type='button' id='loginButton' class='loginSignUpButtons active' value='Log in'/><input type='button' id='signUpButton' class='loginSignUpButtons' value='Sign Up'/></div><div><form id='loginSignUpForm' name='loginSignUpForm'></form></div>";
 
 bodyTag.appendChild(modal);
 
 function openLoginSignUpModal(){
-    document.querySelector("#loginSignUpModalButton").addEventListener("click", () => {
-        openOrCloseMobileNavigation()
-        makeLoginSignUpForm()
-        console.log("otvoreno");
-    })
+    var modal = document.querySelector("#loginSignUpModal");
+    modal.classList.add("active");
+    modal.style.height = "450px";
+    openOrCloseMobileNavigation();
+    makeLoginSignUpForm();
 }
 
-openLoginSignUpModal()
+function closeLoginSignUpModal(){
+    document.querySelector("#loginSignUpModal").classList.remove("active");
+    modal.style.height = 0;
+}
 
-// function createModal(){
-//     // creating a modal
-//     var modal = document.createElement("div");
-//     modal.setAttribute("id", "loginSignUpModal");
-//     // modal.classList.add("active")
-//     // openLoginSignUpModal()
-//     //making buttons div
-//     var buttonsDiv = document.createElement("div");
-//     buttonsDiv.classList.add("loginSignUpButtonsDiv");
-//     //making buttons
-//     modal.appendChild(buttonsDiv);
-//     loginOrSignUpButtons.forEach(item => {
-//         var button = document.createElement("input");
-//         button.type = "button";
-//         button.classList.add("loginSignUpButtons")
-//         button.setAttribute("id", item.idAttribute);
-//         button.value = item.value;
-//         buttonsDiv.appendChild(button)
-//         buttonsDiv.firstElementChild.classList.add("active");
-//     })
-//     bodyTag.appendChild(modal);
+document.querySelector("#closeLoginSignUpModalButton").addEventListener("click", () => {
+    closeLoginSignUpModal();
+})
 
-//     // creating a form
-//     var loginSignUpForm = document.createElement("form");
-//     loginSignUpForm.id = "loginSignUpForm";
-//     loginSignUpForm.name = "loginSignUpForm";
-//     // var formDiv = "<div class='formDiv d-flex flex-direction-column'><label for='inputTextLogin'>Username:</label><input type='text' id='inputTextLogin' name='inputTextLogin'/></div><div class='formDiv d-flex flex-direction-column'><label for='inputPasswordLogin'>Password:</label><input type='password' id='inputPasswordLogin' name='inputPasswordLogin'/></div>";
-//     // loginSignUpForm.innerHTML = formDiv;
-//     // modal.appendChild(loginSignUpForm);
-//     // presenting data based on which button is active
-//     toggleLoginSignUpButtons();
+document.querySelector("#loginSignUpModalButton").addEventListener("click", () => {
+    openLoginSignUpModal();
+})
 
-//     var exitButton = document.createElement("span");
-//     exitButton.setAttribute("id", "closeLoginSignUpModalButton")
-//     exitButton.innerHTML = "";
-
-//     modal.appendChild(exitButton);
-
-//     closeLoginSignUpModal()
-// }
-
-// function toggleLoginSignUpButtons(){
-    document.querySelectorAll(".loginSignUpButtons").forEach(element => {
-        element.addEventListener("click", () => {
-            // finding the currently active button
-            var currentlyActiveButton = document.querySelector(".loginSignUpButtons.active");
-            //if the active button is different than the clicked element, we remove the active class from the active button
-            if(currentlyActiveButton && currentlyActiveButton!==element){
-                currentlyActiveButton.classList.remove("active");
-                makeLoginSignUpForm();
-            }
+document.querySelectorAll(".loginSignUpButtons").forEach(element => {
+    element.addEventListener("click", () => {
+        // finding the currently active button
+        var currentlyActiveButton = document.querySelector(".loginSignUpButtons.active");
+        //if the active button is different than the clicked element, we remove the active class from the active button
+        if(currentlyActiveButton && currentlyActiveButton!==element){
+            currentlyActiveButton.classList.remove("active");
             //adding an active class to the current element
             element.classList.add("active");
-        })
+            makeLoginSignUpForm();
+        }
     })
-// }
-
-// toggleLoginSignUpButtons()
+})
 
 function makeLoginSignUpForm(){
      // finding the currently active button
@@ -206,19 +162,14 @@ function makeLoginSignUpForm(){
     // finding one of the buttons
     var loginSignUpForm = document.querySelector("#loginSignUpForm");
     if(currentlyActiveButton==signUpButton){
-        loginSignUpForm.innerHTML = "<div class='formDiv d-flex flex-direction-column'><label for='inputTextLogin'>Username:</label><input type='text' id='inputTextLogin' name='inputTextLogin'/></div>";
+        loginSignUpForm.innerHTML = "<p>Create a new account: </p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextSignUp' name='inputTextSignUp' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordSignUp' name='inputPasswordSignUp' class='input-field' placeholder='Password'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputRepeatedPasswordSignUp' name='inputRepeatedPasswordSignUp' class='input-field' placeholder='Repeat password'/></div><input type='button' name='confirmSignUpButton' id='confirmSignUpButton' class='modalButton' value='Sign Up'/>";
     }
     else{
-        loginSignUpForm.innerHTML = "<div class='formDiv d-flex flex-direction-column'><label for='inputTextLogin'>Username:</label><input type='text' id='inputTextLogin' name='inputTextLogin'/></div><div class='formDiv d-flex flex-direction-column'><label for='inputPasswordLogin'>Password:</label><input type='password' id='inputPasswordLogin' name='inputPasswordLogin'/></div>";
+        loginSignUpForm.innerHTML = "<p>Log into your account:</p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextLogin' name='inputTextLogin' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordLogin' name='inputPasswordLogin' class='input-field' placeholder='Password'/></div><input type='button' name='confirmLoginButton' id='confirmLoginButton' class='modalButton' value='Log In'/>";
     }
 }
 
 
 
 
-function closeLoginSignUpModal(){
-    document.querySelector("#closeLoginSignUpModalButton").addEventListener("click", () => {
-    document.querySelector("#loginSignUpModal").classList.remove("active");
-    console.log("zatvoreno");
-    })
-}
+
