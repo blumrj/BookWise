@@ -3,10 +3,8 @@
 var bodyTag = document.getElementsByTagName("body")[0];
 var path = window.location.pathname; // npr. /index.html
 var page = path.split("/").pop(); // npr. index.html
-console.log(page)
 
 // navigation
-
 //stranice i linkovi stranica: (zamenice se kasnije sa bazom)
 const navPagesAndLinks = [
     {
@@ -33,6 +31,29 @@ const navPagesAndLinks = [
         id: 5,
         name: "Login/Sign up",
         path: "#",
+    }
+]
+
+//books
+
+const books = [
+    {
+        id: 1,
+        title: "Killing Secrects",
+        author: "Fergus Wormald",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/KillingSecrets.jpg",
+        alt: "Killing Secrects",
+        month: "11",
+    },
+    {
+        id: 2,
+        title: "Killing Secrects2",
+        author: "Fergus Wormald",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/KillingSecrets.jpg",
+        alt: "Killing Secrects",
+        month: "12",
     }
 ]
 
@@ -175,22 +196,54 @@ function makeLoginSignUpForm(){
         loginSignUpForm.innerHTML = "<p>Log into your account:</p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextLogin' name='inputTextLogin' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordLogin' name='inputPasswordLogin' class='input-field' placeholder='Password'/></div><input type='button' name='confirmLoginButton' id='confirmLoginButton' class='modalButton' value='Log In'/>";
     }
 }
+function scrollNavigation(){
+    if(document.body.scrollTop > 30 || document.documentElement.scrollTop > 30){
+        navigation.style.backgroundColor = 'var(--gray)'
+    }
+    else{
+        navigation.style.backgroundColor = '';
+    }
+}
+window.addEventListener("scroll", () => {
+    scrollNavigation();
+})
 
 if(page=='index.html'){
-    let slideIndex = 0;
-    showSlides();
-    
-    function showSlides() {
-      let i;
-      let slides = document.getElementsByClassName("slide");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}
-      slides[slideIndex-1].style.display = "block";
-      setTimeout(showSlides, 3000);
-    } 
+// swiper.js
+const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
+    // Optional parameters
+    loop: true,
+    centeredSlides: true,
+    effect: 'fade',
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  var bookOfTheMonthImg = document.querySelector("#bookOfTheMonthDiv img");
+  var bookOfTheMonthName = document.querySelector("#bookOfTheMonthName");
+  var bookOfTheMonthAuthor = document.querySelector("#bookOfTheMonthAuthor");
+  var bookOfTheMonthNameDescription = document.querySelector("#bookOfTheMonthNameDescription");
+  var date = new Date();
+  var todaysMonth = date.getMonth()
+  console.log(todaysMonth)
+  window.addEventListener("DOMContentLoaded", () => {
+    books.forEach(book => {
+        if(book.month == (todaysMonth + 1)){
+            bookOfTheMonthName.innerHTML = book.title;
+            bookOfTheMonthAuthor.innerHTML = book.author;
+            bookOfTheMonthNameDescription.innerHTML = book.description;
+            bookOfTheMonthImg.src = book.src;
+            bookOfTheMonthImg.alt = book.alt
+        }
+    })
+  })
 
 }
 
