@@ -20,12 +20,12 @@ const navPagesAndLinks = [
     {
         id: 3,
         name: "About us",
-        path: "aboutUs.html",
+        path: "index.html#aboutUs",
     },
     {
         id: 4,
         name: "Contact",
-        path: "contact.html",
+        path: "index.html#contactUs",
     },
     {
         id: 5,
@@ -44,6 +44,7 @@ const books = [
         description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
         src: "assets/img/books/KillingSecrets.jpg",
         alt: "Killing Secrects",
+        price: "768 rsd",
         month: "11",
     },
     {
@@ -53,12 +54,13 @@ const books = [
         description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
         src: "assets/img/books/KillingSecrets.jpg",
         alt: "Killing Secrects",
+        price: "768 rsd",
         month: "12",
     }
 ]
 
 const navigation = document.getElementsByTagName("nav")[0];
-navigation.classList.add("nav-container", "d-flex", "flex-wrap", "justify-content-between", "align-items-center", "uppercase", "nav-dark");
+navigation.classList.add("nav-container", "d-flex", "flex-wrap", "justify-content-between", "align-items-center", "uppercase", "nav-light");
 
 // burger
 const burger = document.createElement("div");
@@ -113,6 +115,11 @@ document.querySelector("#burger").addEventListener("click", () => {
     openOrCloseMobileNavigation()
 })
 
+document.querySelectorAll("#navUl li").forEach(element => {
+    element.addEventListener("click", () => {
+        openOrCloseMobileNavigation();
+    })
+})
 
 
 // nav logo
@@ -152,7 +159,6 @@ function openLoginSignUpModal(){
     var modal = document.querySelector("#loginSignUpModal");
     modal.classList.add("active");
     modal.style.height = "450px";
-    openOrCloseMobileNavigation();
     makeLoginSignUpForm();
 }
 
@@ -198,10 +204,15 @@ function makeLoginSignUpForm(){
 }
 function scrollNavigation(){
     if(document.body.scrollTop > 30 || document.documentElement.scrollTop > 30){
-        navigation.style.backgroundColor = 'var(--gray)'
+        // navigation.style.backgroundColor = 'var(--black)';
+        navigation.classList.remove("nav-light");
+        navigation.classList.add("nav-dark");
     }
     else{
-        navigation.style.backgroundColor = '';
+        // navigation.style.backgroundColor = '';
+        navigation.classList.remove("nav-dark");
+        navigation.classList.add("nav-light");
+
     }
 }
 window.addEventListener("scroll", () => {
@@ -226,6 +237,7 @@ const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
     },
   });
 
+  var bookOfTheMonthDiv = document.querySelector("#bookOfTheMonthDiv");
   var bookOfTheMonthImg = document.querySelector("#bookOfTheMonthDiv img");
   var bookOfTheMonthName = document.querySelector("#bookOfTheMonthName");
   var bookOfTheMonthAuthor = document.querySelector("#bookOfTheMonthAuthor");
@@ -245,6 +257,78 @@ const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
     })
   })
 
+  //contact form
+
+    //name
+    var regexFirstName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{2,}$/;
+    var formFirstName = document.querySelector("#formName");
+    //last name
+    var regexLastName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{2,}$/;
+    var formLastName = document.querySelector("#formLastName");
+    //email
+    var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var formEmail = document.querySelector("#formEmail");
+    //textarea
+    var regexTextArea = /[0-9a-zA-Z]{5,}/;
+    var formTextArea = document.querySelector("#formTextArea");
+
+    //check contact form function
+    formCorrect = 0;
+
+    function checkForm(regexPattern, formElement){
+        var regex = regexPattern;
+        var regexMatch = regex.test(formElement.value);
+        if(regexMatch){
+            formElement.style.borderColor = "initial";
+            formCorrect ++;
+        }
+        else{
+            formElement.style.borderColor = "red";
+        }
+    }
+
+    document.getElementById("contactFormButton").addEventListener("click", () =>{
+        formCorrect = 0;
+        
+        checkForm(regexFirstName, formFirstName);
+        checkForm(regexLastName, formLastName);
+        checkForm(regexEmail, formEmail);
+        checkForm(regexTextArea, formTextArea);
+    
+        if(formCorrect<4){
+            console.log("neuspesno")
+        }
+        else{
+            console.log("uspesno")
+        }
+    })
+}
+
+if(page=="products.html"){
+    var productCardsDiv = document.querySelector("#productCardsDiv");
+
+    window.addEventListener("DOMContentLoaded", () => {
+        books.forEach(book => {
+            var productCard = document.createElement("div");
+            productCard.classList.add("productCard");
+            productCard.innerHTML = `<img src='${book.src}' alt=${book.alt} class='productImg'/>
+            <div>
+                <h3>${book.title}</h3>
+                <p>${book.author}</p>
+                <p>${book.price}</p>
+            </div>`;
+            productCardsDiv.appendChild(productCard);
+
+            productCard.addEventListener("click", () => {
+                openProductPage();
+            })
+      })
+
+    })
+
+    function openProductPage(){
+        window.open("product-page.html", "_self");
+    }
 }
 
 

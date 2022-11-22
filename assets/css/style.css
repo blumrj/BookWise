@@ -1,9 +1,6 @@
 :root{
-    --gray: #181818;
-    --beige: #FFD9CE;
-    /* --red: #a31b1b;
-    --red: #DB5461;
-    --red: #612940; */
+    --black: #181818;
+    --white: ghostwhite;
 }
 *{
     margin: 0;
@@ -11,8 +8,8 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
-    color: var(--gray);
     font-family: montserrat-regular;
+    scroll-behavior: smooth;
 }
 
 /* fonts */
@@ -23,9 +20,6 @@
 @font-face {
     font-family: montserrat-medium-italic;
     src: url(../fonts/Montserrat-MediumItalic.ttf);
-}
-a{
-    color: var(--beige);
 }
 /* width classes */
 .w-50{
@@ -39,14 +33,19 @@ a{
     margin-bottom: 2%;
 }
 /* color classes */
-.black-bg{
-    background-color: #181818;
+.nav-dark, #burger .burger-line{
+    background-color: var(--black);
+    color: var(--white);
 }
-.beige-bg{
-    background-color: var(--beige);
+.nav-dark a{
+    color: var(--white);
 }
-.red-bg{
-    background-color: var(--red);
+.nav-light, .burger-line{
+    background-color: transparent;
+    color: var(--black);
+}
+.nav-light a{
+    color: var(--black);
 }
 /* flex classes */
 .d-flex{
@@ -100,7 +99,7 @@ nav p a{
     height: 100vh;
     transform: translateX(-100%);
     transition: all 300ms ease;
-    background-color: var(--gray);
+    background-color: var(--black);
 }
 #navUl.active{
     transform: translateX(0%);
@@ -112,13 +111,13 @@ nav p a{
     padding: 10px 20px;
 }
 #navUl li a{
-    color: var(--beige);
+    color: var(--white);
 }
 #navUl li.activePage{
-    background-color: var(--beige);
+    background-color: var(--white);
 }
 #navUl li.activePage a{
-    color: var(--gray);
+    color: var(--black);
 }
 /* buger */
 #burger{
@@ -137,7 +136,7 @@ nav p a{
     height: 3px;
     border-radius: 5px;
     transition: transform .5s ease-in-out, background-color .3s ease-in-out, width 0.3s ease;
-    background-color: var(--beige);
+    /* background-color: var(--white); */
 }
 .burger-line:nth-child(1){
     transform: translateY(-8px);
@@ -162,6 +161,7 @@ nav p a{
 #loginSignUpModal{
     height: 0;
     overflow: hidden;
+    position: relative;
 }
 #loginSignUpModal.active{
     overflow: visible;
@@ -171,18 +171,17 @@ nav p a{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    background-color: var(--gray);
-    color: black;
+    background-color: var(--black);
+    color: var(--white);
     box-shadow: 0 0 6px rgb(0 0 0 / 20%);
     border-radius: 10px;
-    
     width: 380px;
     padding: 5px;
 }
 #loginSignUpButtonsDiv{
     width: 60%;
     margin: 35px auto;
-    background-color: aliceblue;
+    background-color: white;
     box-shadow: 0 0 20px 0px #181818;
     border-radius: 30px;
     position: relative;
@@ -200,7 +199,7 @@ nav p a{
 
 }
 #loginSignUpButtonsDiv input.active{
-    background-color: var(--beige);
+    background-color: rgb(168, 168, 168);
     cursor: auto;
  }
  #loginSignUpForm{
@@ -215,7 +214,7 @@ nav p a{
     border-bottom: 1px solid;
     outline: none;
     background: transparent;
-    color: var(--beige);
+    color: var(--white);
  }
  .modalButton{
     width: 50%;
@@ -224,8 +223,8 @@ nav p a{
     outline: none;
     cursor: pointer;
     margin:  20px auto;
-    background-color: var(--beige);
-    color: var(--red);
+    background-color: var(--white);
+    color: var(--black);
  }
  #closeLoginSignUpModalButton::before{
     content: "x";
@@ -277,4 +276,24 @@ nav p a{
     height: 100%;
     object-fit: cover;
 }
-  
+
+/* products*/
+.productCard{
+    cursor: pointer;
+}
+
+/* contact form */
+#contactForm textarea{
+    resize: none;
+    height: 10vh;
+}
+#contactForm input, #contactForm textarea{
+    outline: none;
+    padding: 8px;
+    margin-bottom: 3%;
+    font-family: inherit;
+    width: 80%;
+}
+#contactForm #contactFormButton{
+    width: 120px;
+}

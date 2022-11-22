@@ -17,12 +17,30 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
     <title>BookWise</title>
 </head>
-<body>
+<body class="light-theme">
     <header>
         <nav>
             <!-- content injected through JavaScript -->
         </nav>
     </header>
+    <main>
+        <!-- <h1 id="productsH1">Books</h1> -->
+        <div class="container d-flex justify-content-between">
+            <div>
+                <input type="text" name="searchProducts" id="searchProducts" placeholder="search products"/>
+                <input type="button" name="searchProductsButton" id="searchProductsButton" value="Search"/>
+            </div>
+            <select name="sortProducts" id="sortProducts">
+                <option value="price ascednding">lowest price first</option>
+                <option value="price descending">highest price first</option>
+                <option value="newest products">newest products</option>
+            </select>
+        </div>
+        <div id="productCardsDiv" class="container d-flex justify-content-between flex-wrap">
+            <!-- content injected through JavaScript -->
+        </div>
+        
+    </main>
 
 
     <!-- js -->
