@@ -219,6 +219,25 @@ window.addEventListener("scroll", () => {
     scrollNavigation();
 })
 
+// footer
+var footer = document.createElement("footer");
+footer.classList.add("nav-container", "d-flex", "justify-content-between", "align-items-center", "flex-wrap", "nav-dark")
+var footerInnerHtml = "<div><p><a href='index.html'>BookWise</a></p><a href='https://www.facebook.com/' target='_blank'><i class='fa-brands fa-facebook'></i></a><a href='https://www.instagram.com/' target='_blank'><i class='fa-brands fa-instagram'></i></a></div><div>";
+navPagesAndLinks.forEach(element => {
+    footerInnerHtml += `<p><a href='${element.path}'>${element.name}</a></p>`;
+})
+footerInnerHtml += `</div>
+<div>
+    <label for='newsletter'>Subscribe to out Newsletter</label>
+    <input type='email' name='newsletter' id='newsletter'/>
+    <input type='button' name='newsletterButton' id='newsletterButton' value='Send'/>
+</div>`;
+
+footer.innerHTML = footerInnerHtml;
+bodyTag.appendChild(footer)
+
+console.log(footerInnerHtml)
+
 if(page=='index.html'){
 // swiper.js
 const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
