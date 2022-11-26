@@ -222,21 +222,41 @@ function makeLoginSignUpForm(){
         loginSignUpForm.innerHTML = "<p>Log into your account:</p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextLogin' name='inputTextLogin' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordLogin' name='inputPasswordLogin' class='input-field' placeholder='Password'/></div><input type='button' name='confirmLoginButton' id='confirmLoginButton' class='modalButton' value='Log In'/>";
     }
 }
-function scrollNavigation(){
+//nav scroll and scroll to top
+
+var scrollToTopBtn = document.createElement("button");
+scrollToTopBtn.setAttribute("id", "scrollToTopButton");
+scrollToTopBtn.innerHTML = `<i class="fa-solid fa-arrow-up">`;
+bodyTag.appendChild(scrollToTopBtn);
+
+//scroll to top
+let scrollToTopButton = document.querySelector("#scrollToTopButton");
+scrollToTopButton.addEventListener("click", () => {
+    scrollToTop();
+})
+
+function scrollFunction(){
     if(document.body.scrollTop > 30 || document.documentElement.scrollTop > 30){
-        // navigation.style.backgroundColor = 'var(--black)';
         navigation.classList.remove("nav-light");
         navigation.classList.add("nav-dark");
-    }
-    else{
-        // navigation.style.backgroundColor = '';
-        navigation.classList.remove("nav-dark");
-        navigation.classList.add("nav-light");
+        scrollToTopButton.style.display = "block";
 
     }
+    else{
+        navigation.classList.remove("nav-dark");
+        navigation.classList.add("nav-light");
+        scrollToTopButton.style.display = "none";
+    }
 }
+
+// When the user clicks on the button, scroll to the top of the document
+function scrollToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
 window.addEventListener("scroll", () => {
-    scrollNavigation();
+    scrollFunction();
 })
 
 // footer
@@ -256,9 +276,11 @@ footerInnerHtml += `</div>
 </div>`;
 
 footer.innerHTML = footerInnerHtml;
-bodyTag.appendChild(footer)
+bodyTag.appendChild(footer);
 
-if(page=='index.html'){
+
+
+if(page=='index.html' || page==''){
 // swiper.js
 const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
     // Optional parameters
@@ -354,9 +376,9 @@ if(page=="products.html"){
             productCard.classList.add("productCard");
             productCard.innerHTML = `<img src='${book.src}' alt=${book.alt} class='productImg'/>
             <div>
-                <h3>${book.title}</h3>
-                <p>${book.author}</p>
-                <p>${book.price}</p>
+                <h3 class='mb-2'>${book.title}</h3>
+                <p class='mb-2'>${book.author}</p>
+                <p class='mb-2'>${book.price}</p>
             </div>`;
             productCardsDiv.appendChild(productCard);
 
