@@ -56,6 +56,26 @@ const books = [
         alt: "Killing Secrects",
         price: "768 rsd",
         month: "12",
+    },
+    {
+        id: 2,
+        title: "Killing Secrects2",
+        author: "Fergus Wormald",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/KillingSecrets.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
+    },
+    {
+        id: 2,
+        title: "Killing Secrects2",
+        author: "Fergus Wormald",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/KillingSecrets.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
     }
 ]
 
@@ -229,8 +249,10 @@ navPagesAndLinks.forEach(element => {
 footerInnerHtml += `</div>
 <div>
     <label for='newsletter'>Subscribe to out Newsletter</label>
+    <div>
     <input type='email' name='newsletter' id='newsletter'/>
     <input type='button' name='newsletterButton' id='newsletterButton' value='Send'/>
+    </div>
 </div>`;
 
 footer.innerHTML = footerInnerHtml;
@@ -256,21 +278,22 @@ const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
   });
 
   var bookOfTheMonthDiv = document.querySelector("#bookOfTheMonthDiv");
-  var bookOfTheMonthImg = document.querySelector("#bookOfTheMonthDiv img");
-  var bookOfTheMonthName = document.querySelector("#bookOfTheMonthName");
-  var bookOfTheMonthAuthor = document.querySelector("#bookOfTheMonthAuthor");
-  var bookOfTheMonthNameDescription = document.querySelector("#bookOfTheMonthNameDescription");
-  var date = new Date();
-  var todaysMonth = date.getMonth()
-  console.log(todaysMonth)
+  
   window.addEventListener("DOMContentLoaded", () => {
+    var date = new Date();
+    var todaysMonth = date.getMonth();
+
     books.forEach(book => {
         if(book.month == (todaysMonth + 1)){
-            bookOfTheMonthName.innerHTML = book.title;
-            bookOfTheMonthAuthor.innerHTML = book.author;
-            bookOfTheMonthNameDescription.innerHTML = book.description;
-            bookOfTheMonthImg.src = book.src;
-            bookOfTheMonthImg.alt = book.alt
+            bookOfTheMonthDiv.innerHTML = `<div class="w-50">
+            <h1 class="mb-5 ">Book Of The Month</h1>
+            <h2 id="bookOfTheMonthName" class="mb-2">${book.title}</h2>
+            <p id="bookOfTheMonthAuthor" class="mb-2">${book.author}</p>
+            <p id="bookOfTheMonthNameDescription1">${book.description}</p>
+        </div>
+        <div>
+            <img src="${book.src}" alt="${book.alt}" class="img-fluid"/>
+        </div>`
         }
     })
   })

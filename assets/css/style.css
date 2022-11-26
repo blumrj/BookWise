@@ -116,6 +116,11 @@ nav p a{
 #navUl li a{
     color: var(--white);
 }
+#navUl li:hover{
+    background-color: #a8a8a8 !important;
+    transition: background-color .5s;
+    color: #181818;
+}
 #navUl li.activePage{
     background-color: var(--white);
 }
@@ -203,7 +208,7 @@ nav p a{
 
 }
 #loginSignUpButtonsDiv input.active{
-    background-color: rgb(168, 168, 168);
+    background-color: #a8a8a8;
     cursor: auto;
  }
  #loginSignUpForm{
@@ -274,22 +279,29 @@ nav p a{
     width: 600px;
     height: 300px;
 } */
-.swiper-slide img {
-    /* width: 100%; */
-    /* height: 100%;
+/* .swiper-slide img {
+    width: 100%; 
+    height: 100%;
     object-fit: cover;
     background-repeat: no-repeat;
-    background-position: center; */
-}
+    background-position: center;
+} */
 
 /* img classes */
 .img-fluid{
     max-width: 100%;
     height: auto;
 }
+
 /* products*/
 .productCard{
     cursor: pointer;
+    width: 20%;
+    /* background-color: antiquewhite; */
+}
+.productCard img{
+    max-width: 100%;
+    height: auto;
 }
 
 /* contact form */
@@ -328,10 +340,19 @@ footer.nav-container{
         width: auto;
         margin-bottom: 5%;
     }
+    #contactForm, #contactForm input, #contactForm textarea{
+        width: 100%;
+    }
+    .productCard{
+        width: 40%;
+    }
 }
 @media screen and (max-width: 768px){
     #burger:hover .burger-line:nth-child(2){
         width:  25px;
+    }
+    .productCard{
+        width: 45%;
     }
 }
 @media screen and (max-width: 576px){
@@ -340,6 +361,17 @@ footer.nav-container{
     }
     #loginSignUpModal.active{
         width: 80%;
+    }
+    footer{
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    footer div{
+        padding: 2% 0px;
+    }
+    .productCard{
+        width: 100%;
+        margin: auto;
     }
 }
 @media screen and (max-width: 376px){
