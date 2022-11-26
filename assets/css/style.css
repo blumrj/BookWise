@@ -192,7 +192,7 @@ nav p a{
 }
 #loginSignUpButtonsDiv input{
     width: 50%;
-   padding: 10px 30px;
+   padding: 10px 0px;
    background: transparent;
    border: 0;
    outline: none;
@@ -222,7 +222,7 @@ nav p a{
  }
  .modalButton{
     width: 50%;
-    padding: 10px 30px;
+    padding: 10px 0px;
     border-radius: 30px;
     outline: none;
     cursor: pointer;
@@ -275,12 +275,18 @@ nav p a{
     height: 300px;
 } */
 .swiper-slide img {
-    /* display: block; */
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%;
     object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
 }
 
+/* img classes */
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+}
 /* products*/
 .productCard{
     cursor: pointer;
@@ -308,3 +314,39 @@ footer.nav-container{
     padding-top: 2%;
     padding-bottom: 2%;
 }
+
+
+/* responsive */
+@media screen and (max-width: 920px){
+    #navUl{
+        width: 60vw;
+    }
+    #bookOfTheMonthDiv{
+        justify-content: initial;
+    }
+    #bookOfTheMonthDiv div{
+        width: auto;
+        margin-bottom: 5%;
+    }
+}
+@media screen and (max-width: 768px){
+    #burger:hover .burger-line:nth-child(2){
+        width:  25px;
+    }
+}
+@media screen and (max-width: 576px){
+    #navUl{
+        width: 100vw;
+    }
+    #loginSignUpModal.active{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 376px){
+    
+}
+/* @media screen and (max-width: 290px){
+    body{
+        font-size: 13px;
+    }
+} */

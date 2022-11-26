@@ -236,8 +236,6 @@ footerInnerHtml += `</div>
 footer.innerHTML = footerInnerHtml;
 bodyTag.appendChild(footer)
 
-console.log(footerInnerHtml)
-
 if(page=='index.html'){
 // swiper.js
 const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
@@ -245,6 +243,7 @@ const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
     loop: true,
     centeredSlides: true,
     effect: 'fade',
+    updateOnWindowResize: true,
     autoplay: {
         delay: 2000,
         disableOnInteraction: false,
