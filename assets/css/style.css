@@ -1,6 +1,10 @@
 :root{
     --black: #181818;
-    --white: ghostwhite;
+    --white: #f8f8ff;
+    --orange: #fcab64;
+    --purple: #9448BC;
+    --purpleHover: #743795;
+    --red: #C44536;
 }
 *{
     margin: 0;
@@ -42,6 +46,10 @@
 }
 .nav-dark a{
     color: var(--white);
+}
+.nav-dark a:hover{
+    color: var(--purple);
+    transition: color .3s ease;
 }
 .nav-light, .burger-line{
     background-color: transparent;
@@ -117,16 +125,16 @@ nav p a{
     color: var(--white);
 }
 #navUl li:hover{
-    background-color: #a8a8a8 !important;
+    background-color: var(--purpleHover) !important;
     transition: background-color .5s;
     color: #181818;
 }
 #navUl li.activePage{
-    background-color: var(--white);
+    background-color: var(--purple);
 }
-#navUl li.activePage a{
+/* #navUl li.activePage a{
     color: var(--black);
-}
+} */
 /* buger */
 #burger{
     position: relative;
@@ -190,9 +198,9 @@ nav p a{
 #loginSignUpButtonsDiv{
     width: 60%;
     margin: 35px auto;
-    background-color: white;
+    background-color: var(--white);
     box-shadow: 0 0 20px 0px #181818;
-    border-radius: 30px;
+    border-radius: 15px;
     position: relative;
 }
 #loginSignUpButtonsDiv input{
@@ -202,13 +210,13 @@ nav p a{
    border: 0;
    outline: none;
    position: relative;
-   border-radius: 30px;
+   border-radius: 15px;
    cursor: pointer;
    transition: .3s;
-
 }
 #loginSignUpButtonsDiv input.active{
-    background-color: #a8a8a8;
+    background-color: var(--purple);
+    color: var(--white);
     cursor: auto;
  }
  #loginSignUpForm{
@@ -226,14 +234,15 @@ nav p a{
     color: var(--white);
  }
  .modalButton{
-    width: 50%;
+    width: 40%;
     padding: 10px 0px;
-    border-radius: 30px;
+    border-radius: 5px;
     outline: none;
     cursor: pointer;
     margin:  20px auto;
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
  }
  #closeLoginSignUpModalButton::before{
     content: "x";
@@ -294,12 +303,36 @@ nav p a{
 }
 /* products*/
 #productsH1{
-    background-color: #a8a8a8;
+    background-color: var(--purple);
+    color: var(--white);
     padding: 8% 10% 2% 10%;
 }
 #searchProductsDiv.container{
     padding: 2% 10%;
 }
+/* #searchProductsButton{
+    width: 100px;
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
+    padding: ;
+} */
+#searchProducts, #sortProducts{
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border-color: var(--purple);
+}
+#sortProducts{
+    background-color: var(--purple);
+    padding: 5px;
+    border: none;
+    color: var(--white);
+}
+#sortProducts:hover{
+    background-color: var(--purpleHover);
+}
+
 .productCard{
     cursor: pointer;
     width: 20%;
@@ -324,8 +357,17 @@ nav p a{
 }
 #contactForm #contactFormButton{
     width: 120px;
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 0px;
 }
-
+#contactForm #contactFormButton:hover{
+    background-color:#743795;
+    transition: all .3s ease;
+}
 /* footer */
 footer.nav-container{
     height: 100%;
@@ -338,7 +380,26 @@ footer p {
 footer div a i{
     margin-right: 2% !important;
 }
-
+footer #newsletter{
+    margin-top: 15px;
+    padding: 5px 0px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+footer #newsletterButton, #searchProductsButton{
+    width: 100px;
+    padding: 5px 0px;
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+footer #newsletterButton:hover, #searchProductsButton:hover{
+    background-color: var(--purpleHover);
+    transition: all .3s ease;
+}
 /* scroll to top button */
 #scrollToTopButton {
     display: none;
@@ -348,12 +409,16 @@ footer div a i{
     z-index: 5; 
     border: none; 
     outline: none;
-    background-color: #a8a8a8;
+    background-color: var(--purple);
+    color: var(--white);
     cursor: pointer;
     padding: 15px; 
     border-radius: 10px; 
   }
-
+#scrollToTopButton:hover{
+background-color: var(--purpleHover);
+transition: all .3s ease;
+}
 /* responsive */
 @media screen and (max-width: 920px){
     #navUl{
