@@ -288,13 +288,16 @@ nav p a{
     width: 600px;
     height: 300px;
 } */
-/* .swiper-slide img {
-    width: 100%; 
-    height: 100%;
+.swiper-slide{
+    width: auto; 
+    height: 100vh;
     object-fit: cover;
     background-repeat: no-repeat;
     background-position: center;
-} */
+}
+.swiper-slide img{
+    height: inherit;
+}
 
 /* img classes */
 .img-fluid{

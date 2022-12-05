@@ -115,6 +115,9 @@ navPagesAndLinks.forEach(item => {
     }
 })
 
+// function openPages(path){
+//     window.open(path, "_self");
+// }
 
 //mobile navigation 
 function openOrCloseMobileNavigation(){
@@ -264,7 +267,12 @@ var footer = document.createElement("footer");
 footer.classList.add("nav-container", "d-flex", "justify-content-between", "align-items-center", "flex-wrap", "nav-dark")
 var footerInnerHtml = "<div><p><a href='index.html'>BookWise</a></p><a href='https://www.facebook.com/' target='_blank'><i class='fa-brands fa-facebook'></i></a><a href='https://www.instagram.com/' target='_blank'><i class='fa-brands fa-instagram'></i></a></div><div>";
 navPagesAndLinks.forEach(element => {
-    footerInnerHtml += `<p><a href='${element.path}'>${element.name}</a></p>`;
+    if(element.path=='#'){
+        footerInnerHtml += `<p onclick='openLoginSignUpModal()'><a id='openLoginModal' href='${element.path}'>${element.name}</a></p>`;
+    }
+    else{
+        footerInnerHtml += `<p><a href='${element.path}'>${element.name}</a></p>`;
+    }
 })
 footerInnerHtml += `</div>
 <div>
@@ -277,6 +285,7 @@ footerInnerHtml += `</div>
 
 footer.innerHTML = footerInnerHtml;
 bodyTag.appendChild(footer);
+
 
 
 
