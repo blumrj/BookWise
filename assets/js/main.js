@@ -99,6 +99,9 @@ navigation.appendChild(ul);
 
 navPagesAndLinks.forEach(item => {
     var liTag = document.createElement("li");
+    liTag.addEventListener("click", () => {
+        openPages(item.path);
+    })
     var aTag = document.createElement("a");
     aTag.href = item.path;
     aTag.innerHTML = item.name;
@@ -115,9 +118,9 @@ navPagesAndLinks.forEach(item => {
     }
 })
 
-// function openPages(path){
-//     window.open(path, "_self");
-// }
+function openPages(path){
+    window.open(path, "_self");
+}
 
 //mobile navigation 
 function openOrCloseMobileNavigation(){
@@ -293,6 +296,8 @@ if(page=='index.html' || page==''){
 // swiper.js
 const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
     // Optional parameters
+    init: true,
+    createElements: true,
     loop: true,
     centeredSlides: true,
     effect: 'fade',
@@ -306,7 +311,34 @@ const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
       el: '.swiper-pagination',
       clickable: true,
     },
+
   });
+
+  const swiper = document.querySelector('.swiper').swiper;
+
+  const headerImages = [
+    {
+        id: 1,
+        path: "assets/img/headerImageAnsweringTheSun.jpg",
+        alt: "Answering The Sun",
+    },
+    {
+        id: 2,
+        path: "assets/img/headerImageDangerousIllusion.jpg",
+        alt: "Dangerous Illusion",
+    },
+    {
+        id: 3,
+        path: "assets/img/headerImageTheSilverTower.jpg",
+        alt: "The Silver Tower",
+    },
+  ]
+
+  headerImages.forEach(image => {
+    swiper.addSlide(image.id, `<div class="swiper-slide"><img src="${image.path}" alt="${image.alt}"></div>`);
+  })
+
+
 
   var bookOfTheMonthDiv = document.querySelector("#bookOfTheMonthDiv");
   
