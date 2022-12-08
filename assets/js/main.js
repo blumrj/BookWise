@@ -290,8 +290,6 @@ footer.innerHTML = footerInnerHtml;
 bodyTag.appendChild(footer);
 
 
-
-
 if(page=='index.html' || page==''){
 // swiper.js
 const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
@@ -338,8 +336,66 @@ const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
     swiper.addSlide(image.id, `<div class="swiper-slide"><img src="${image.path}" alt="${image.alt}"></div>`);
   })
 
+  const recommendedBooks = [
+    {
+        id: 1,
+        path: "assets/img/books/KillingSecrets.jpg",
+        alt: "Answering The Sun",
+    },
+    {
+        id: 2,
+        path: "assets/img/kn2.jpeg",
+        alt: "Dangerous Illusion",
+    },
+    {
+        id: 3,
+        path: "assets/img/books/KillingSecrets.jpg",
+        alt: "The Silver Tower",
+    },
+    {
+        id: 4,
+        path: "assets/img/kn2.jpeg",
+        alt: "Dangerous Illusion",
+    },
+    {
+        id: 5,
+        path: "assets/img/books/KillingSecrets.jpg",
+        alt: "The Silver Tower",
+    },
+  ]
 
 
+// top 5 slider
+const top5Slider = new Swiper('.top5Slider', {
+    // Optional parameters
+    init: true,
+    createElements: true,
+    loop: true,
+    // updateOnWindowResize: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        // when window width is >= 640px
+        920: {
+          slidesPerView: 5,
+          spaceBetween: 40
+        },
+        768: {
+            slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
+  });
+
+  var top5Slider1 = document.querySelector('.top5Slider').swiper;
+  recommendedBooks.forEach(image => {
+    top5Slider1.addSlide(image.id, `<div class="swiper-slide"><img src="${image.path}" alt="${image.alt}" class="img-fluid"></div>`);
+  })
+
+
+  // book of the month
   var bookOfTheMonthDiv = document.querySelector("#bookOfTheMonthDiv");
   
   window.addEventListener("DOMContentLoaded", () => {
