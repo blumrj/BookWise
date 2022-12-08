@@ -2,7 +2,7 @@
     --black: #181818;
     --white: #f8f8ff;
     --orange: #fcab64;
-    --purple: #9448BC;
+    --purple: #9447bd;
     --purpleHover: #743795;
     --red: #C44536;
 }
@@ -91,6 +91,20 @@
     margin: auto;
     overflow: auto;
 }
+/* buttons */
+.button{
+    width: 120px;
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.button:hover{
+    background-color: var(--purpleHover);
+}
 /* nav */
 nav{
     position: fixed;
@@ -133,9 +147,6 @@ nav p a{
 #navUl li.activePage{
     background-color: var(--purple);
 }
-/* #navUl li.activePage a{
-    color: var(--black);
-} */
 /* buger */
 #burger{
     position: relative;
@@ -174,7 +185,6 @@ nav p a{
     transform: rotate(-45deg);
     background-color: var(--white);
 }
-
 /* login sign up modal */
 #loginSignUpModal{
     height: 0;
@@ -236,14 +246,7 @@ nav p a{
  }
  .modalButton{
     width: 40%;
-    padding: 10px 0px;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
     margin:  20px auto;
-    background-color: var(--purple);
-    color: var(--white);
-    border: none;
  }
  #closeLoginSignUpModalButton::before{
     content: "x";
@@ -255,65 +258,43 @@ nav p a{
     top: 2%;
     right: 4%;
  }
-
- /*book slider*/
-
- #sliderContainer{
-    max-width: 100vh;
-    position: relative;
-    margin: auto;
- }
- .slide{
-    display: none;
- }
- .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-
-/* swiper js */
-/* .swiper {
-    width: 600px;
-    height: 300px;
-} */
-/* .swiper-slide{
-    object-fit: cover;
-    
-} */
-/* .swiper-slide img{
-    object-fit: cover;
-  object-position: 5%;
-  width: 900px;
-  height: 100vh;
-} */
-
 /* img classes */
 .img-fluid{
     max-width: 100%;
     height: auto;
 }
+/* book of the month */
+#bookOfTheMonthDiv img, .productImg{
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px -5px rgba(0,0,0,1);
 
+}
 /* top 5 slider */
 .top5Slider .swiper-button-prev, .top5Slider .swiper-button-next{
     color: var(--black);
+}
+.top5Slider .swiper-slide{
+    position: relative;
 }
 .top5Slider .swiper-slide img{
     border-radius: 10px;
     box-shadow: 0px 0px 10px -5px rgba(0,0,0,1);
     cursor: pointer;
+}
+.top5Slider .swiper-slide .over{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    background-color: rgba(148,71,189,0.8);
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+}
+.top5Slider .swiper-slide .over:hover{
+    opacity: 1;
 }
 /* products*/
 #productsH1{
@@ -324,13 +305,6 @@ nav p a{
 #searchProductsDiv.container{
     padding: 2% 10%;
 }
-/* #searchProductsButton{
-    width: 100px;
-    background-color: var(--purple);
-    color: var(--white);
-    border: none;
-    padding: ;
-} */
 #searchProducts, #sortProducts{
     padding: 5px;
     border-radius: 5px;
@@ -346,7 +320,6 @@ nav p a{
 #sortProducts:hover{
     background-color: var(--purpleHover);
 }
-
 .productCard{
     cursor: pointer;
     width: 20%;
@@ -356,7 +329,6 @@ nav p a{
     max-width: 100%;
     height: auto;
 }
-
 /* contact form */
 #contactForm textarea{
     resize: none;
@@ -371,11 +343,6 @@ nav p a{
 }
 #contactForm #contactFormButton{
     width: 120px;
-    background-color: var(--purple);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     padding: 10px 0px;
 }
 #contactForm #contactFormButton:hover{
@@ -404,15 +371,6 @@ footer #newsletter{
 footer #newsletterButton, #searchProductsButton{
     width: 100px;
     padding: 5px 0px;
-    background-color: var(--purple);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-footer #newsletterButton:hover, #searchProductsButton:hover{
-    background-color: var(--purpleHover);
-    transition: all .3s ease;
 }
 /* scroll to top button */
 #scrollToTopButton {
@@ -466,6 +424,9 @@ transition: all .3s ease;
       object-position: 6%;
       width: 100%;
       height: 320px;
+    }
+    .top5Slider .swiper-slide .over{
+        display: none;
     }
     #navUl{
         width: 100vw;

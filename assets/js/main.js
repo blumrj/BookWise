@@ -222,10 +222,10 @@ function makeLoginSignUpForm(){
     // finding one of the buttons
     var loginSignUpForm = document.querySelector("#loginSignUpForm");
     if(currentlyActiveButton==signUpButton){
-        loginSignUpForm.innerHTML = "<p>Create a new account: </p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextSignUp' name='inputTextSignUp' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordSignUp' name='inputPasswordSignUp' class='input-field' placeholder='Password'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputRepeatedPasswordSignUp' name='inputRepeatedPasswordSignUp' class='input-field' placeholder='Repeat password'/></div><input type='button' name='confirmSignUpButton' id='confirmSignUpButton' class='modalButton' value='Sign Up'/>";
+        loginSignUpForm.innerHTML = "<p>Create a new account: </p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextSignUp' name='inputTextSignUp' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordSignUp' name='inputPasswordSignUp' class='input-field' placeholder='Password'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputRepeatedPasswordSignUp' name='inputRepeatedPasswordSignUp' class='input-field' placeholder='Repeat password'/></div><input type='button' name='confirmSignUpButton' id='confirmSignUpButton' class='modalButton button' value='Sign Up'/>";
     }
     else{
-        loginSignUpForm.innerHTML = "<p>Log into your account:</p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextLogin' name='inputTextLogin' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordLogin' name='inputPasswordLogin' class='input-field' placeholder='Password'/></div><input type='button' name='confirmLoginButton' id='confirmLoginButton' class='modalButton' value='Log In'/>";
+        loginSignUpForm.innerHTML = "<p>Log into your account:</p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextLogin' name='inputTextLogin' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordLogin' name='inputPasswordLogin' class='input-field' placeholder='Password'/></div><input type='button' name='confirmLoginButton' id='confirmLoginButton' class='modalButton button' value='Log In'/>";
     }
 }
 //nav scroll and scroll to top
@@ -282,7 +282,7 @@ footerInnerHtml += `</div>
     <label for='newsletter'>Subscribe to out Newsletter</label>
     <div>
     <input type='email' name='newsletter' id='newsletter'/>
-    <input type='button' name='newsletterButton' id='newsletterButton' value='Send'/>
+    <input type='button' name='newsletterButton' id='newsletterButton' class='button' value='Send'/>
     </div>
 </div>`;
 
@@ -391,7 +391,7 @@ const top5Slider = new Swiper('.top5Slider', {
 
   var top5Slider1 = document.querySelector('.top5Slider').swiper;
   recommendedBooks.forEach(image => {
-    top5Slider1.addSlide(image.id, `<div class="swiper-slide"><img src="${image.path}" alt="${image.alt}" class="img-fluid"></div>`);
+    top5Slider1.addSlide(image.id, `<div class="swiper-slide"><img src="${image.path}" alt="${image.alt}" class="img-fluid"><div class='over'><p>See more</p></div></div>`);
   })
 
 
@@ -408,7 +408,8 @@ const top5Slider = new Swiper('.top5Slider', {
             <h1 class="mb-5 ">Book Of The Month</h1>
             <h2 id="bookOfTheMonthName" class="mb-2">${book.title}</h2>
             <p id="bookOfTheMonthAuthor" class="mb-2">${book.author}</p>
-            <p id="bookOfTheMonthNameDescription1">${book.description}</p>
+            <p id="bookOfTheMonthNameDescription1" class="mb-5">${book.description}</p>
+            <input type='button' value='Add to cart' class='button'/>
         </div>
         <div>
             <img src="${book.src}" alt="${book.alt}" class="img-fluid"/>
