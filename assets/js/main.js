@@ -291,6 +291,17 @@ footerInnerHtml += `</div>
 footer.innerHTML = footerInnerHtml;
 bodyTag.appendChild(footer);
 
+// overlay functions
+function showOverlay(element){
+    element.addEventListener("mouseover", () => {
+        element.lastChild.style.opacity = "1";
+    })
+}
+function hideOverlay(element){
+    element.addEventListener("mouseout", () => {
+        element.lastChild.style.opacity = "0";
+    })
+}
 
 if(page=='index.html' || page==''){
 // swiper.js
@@ -396,15 +407,13 @@ const top5Slider = new Swiper('.top5Slider', {
     top5Slider1.addSlide(image.id, `<div class="swiper-slide" ><img src="${image.path}" alt="${image.alt}" class="img-fluid"><div class='overlay'><p>See more</p></div></div>`);
   })
 
+
+
 var top5Slides = document.querySelectorAll(".top5Slider .swiper-slide");
 
 top5Slides.forEach(slide => {
-    slide.addEventListener("mouseover", ()=> {
-        slide.lastChild.style.opacity = "1"
-    })
-    slide.addEventListener("mouseout", () => {
-        slide.lastChild.style.opacity = "0"
-    })
+        showOverlay(slide);
+        hideOverlay(slide)
 })
 
   // book of the month
@@ -483,17 +492,20 @@ if(page=="products.html"){
         books.forEach(book => {
             var productCard = document.createElement("div");
             productCard.classList.add("productCard");
+            productCard.setAttribute("data-aos", "fade-up")
             productCard.innerHTML = `<img src='${book.src}' alt=${book.alt} class='productImg'/>
             <div>
                 <h3 class='mb-2'>${book.title}</h3>
                 <p class='mb-2'>${book.author}</p>
                 <p class='mb-2'>${book.price}</p>
-            </div>`;
+            </div> <div class='overlay'>See more</div>`;
             productCardsDiv.appendChild(productCard);
 
             productCard.addEventListener("click", () => {
                 openProductPage();
             })
+            showOverlay(productCard);
+            hideOverlay(productCard);
       })
 
     })
