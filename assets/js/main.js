@@ -1,8 +1,10 @@
-// console.log("OK")
 
 var bodyTag = document.getElementsByTagName("body")[0];
 var path = window.location.pathname; // npr. /index.html
 var page = path.split("/").pop(); // npr. index.html
+
+// initializing aos
+AOS.init();
 
 // navigation
 //stranice i linkovi stranica: (zamenice se kasnije sa bazom)
@@ -391,9 +393,19 @@ const top5Slider = new Swiper('.top5Slider', {
 
   var top5Slider1 = document.querySelector('.top5Slider').swiper;
   recommendedBooks.forEach(image => {
-    top5Slider1.addSlide(image.id, `<div class="swiper-slide"><img src="${image.path}" alt="${image.alt}" class="img-fluid"><div class='over'><p>See more</p></div></div>`);
+    top5Slider1.addSlide(image.id, `<div class="swiper-slide" ><img src="${image.path}" alt="${image.alt}" class="img-fluid"><div class='overlay'><p>See more</p></div></div>`);
   })
 
+var top5Slides = document.querySelectorAll(".top5Slider .swiper-slide");
+
+top5Slides.forEach(slide => {
+    slide.addEventListener("mouseover", ()=> {
+        slide.lastChild.style.opacity = "1"
+    })
+    slide.addEventListener("mouseout", () => {
+        slide.lastChild.style.opacity = "0"
+    })
+})
 
   // book of the month
   var bookOfTheMonthDiv = document.querySelector("#bookOfTheMonthDiv");
@@ -405,8 +417,7 @@ const top5Slider = new Swiper('.top5Slider', {
     books.forEach(book => {
         if(book.month == (todaysMonth + 1)){
             bookOfTheMonthDiv.innerHTML = `<div class="w-50">
-            <h1 class="mb-5 ">Book Of The Month</h1>
-            <h2 id="bookOfTheMonthName" class="mb-2">${book.title}</h2>
+            <h3 id="bookOfTheMonthName" class="mb-2">${book.title}</h3>
             <p id="bookOfTheMonthAuthor" class="mb-2">${book.author}</p>
             <p id="bookOfTheMonthNameDescription1" class="mb-5">${book.description}</p>
             <input type='button' value='Add to cart' class='button'/>

@@ -1,10 +1,10 @@
 :root{
     --black: #181818;
     --white: #f8f8ff;
-    --orange: #fcab64;
+    --orange: #EF8354;
     --purple: #9447bd;
     --purpleHover: #743795;
-    --red: #C44536;
+    --red: rgb(196, 69, 54);
 }
 *{
     margin: 0;
@@ -264,8 +264,11 @@ nav p a{
     height: auto;
 }
 /* book of the month */
+/* #bookOfTheMonth{
+    background-color: var(--purple);
+} */
 #bookOfTheMonthDiv img, .productImg{
-    border-radius: 10px;
+    /* border-radius: 10px; */
     box-shadow: 0px 0px 10px -5px rgba(0,0,0,1);
 
 }
@@ -277,24 +280,20 @@ nav p a{
     position: relative;
 }
 .top5Slider .swiper-slide img{
-    border-radius: 10px;
     box-shadow: 0px 0px 10px -5px rgba(0,0,0,1);
     cursor: pointer;
 }
-.top5Slider .swiper-slide .over{
+.top5Slider .swiper-slide .overlay{
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    inset: 0;
-    background-color: rgba(148,71,189,0.8);
-    border-radius: 10px;
+    inset: 60% 0 0 0 ;
+    background-color: rgba(148,71,189,0.8); 
+    border-radius: 5px;
     cursor: pointer;
     opacity: 0;
     transition: 0.5s ease-in-out;
-}
-.top5Slider .swiper-slide .over:hover{
-    opacity: 1;
 }
 /* products*/
 #productsH1{
@@ -398,6 +397,7 @@ transition: all .3s ease;
     }
     #bookOfTheMonthDiv{
         justify-content: initial;
+        flex-direction: column-reverse;
     }
     #bookOfTheMonthDiv div{
         width: auto;
@@ -425,7 +425,7 @@ transition: all .3s ease;
       width: 100%;
       height: 320px;
     }
-    .top5Slider .swiper-slide .over{
+    .top5Slider .swiper-slide .overlay{
         display: none;
     }
     #navUl{

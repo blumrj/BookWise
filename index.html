@@ -15,6 +15,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- swiper.js css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- aos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
     <title>BookWise</title>
@@ -31,28 +33,34 @@
             <!-- content injected through JavaScript -->
             <div class="swiper-pagination"></div>
         </div>
-        <!-- book of the month -->
-        <div id="bookOfTheMonthDiv" class="container d-flex justify-content-around flex-wrap">
-            <!-- content injected through JavaScript -->
-        </div>
 
         <!-- top 5 slider -->
         <div class="container">
             <h2 class="mb-5">Books we recommend</h2>
-            <div class="swiper top5Slider">
+            <div class="swiper top5Slider" data-aos="fade-up">
                 <!-- content injected through JavaScript -->
                 <!-- navigation buttons -->
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
         </div>
+        <!-- book of the month -->
+        <div id="bookOfTheMonth" class="container" data-aos="fade-up">
+            <h2 class="mb-5">Book of the month</h2>
+            <div id="bookOfTheMonthDiv" class=" d-flex justify-content-between flex-wrap" >
+                <!-- content injected through JavaScript -->
+            </div>
+        </div>
         
-        <div id="aboutUs" class="container ">
+
+        
+        
+        <div id="aboutUs" class="container" data-aos="fade-up">
             <h2 class="mb-5">About us</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo aut corporis laboriosam exercitationem quod architecto adipisci! Ipsum consectetur debitis libero perspiciatis vel sequi, dicta voluptates necessitatibus mollitia molestias, laboriosam vero! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi animi eum modi voluptas labore, in eligendi nostrum nesciunt non ullam explicabo doloribus eos aliquid enim? Culpa asperiores modi eveniet laudantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum similique fugiat officiis. Hic nobis numquam mollitia in quam ipsa illum, quidem accusantium distinctio. Nihil temporibus natus soluta laudantium libero repudiandae!</p>
         </div>
         
-        <div id="contactUs" class="container">
+        <div id="contactUs" class="container" data-aos="fade-up">
             <h2 class="mb-5">Contact us</h2>
             <form action="" id="contactForm" name="contactForm" class="w-50 d-flex flex-direction-column">
                  <!-- name -->
@@ -74,6 +82,8 @@
     </main>
     <!-- swiper.js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- aos js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- js -->
     <script src="assets/js/main.js" type="text/javascript"></script>
 </body>
