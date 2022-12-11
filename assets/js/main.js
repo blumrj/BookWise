@@ -291,6 +291,23 @@ footerInnerHtml += `</div>
 footer.innerHTML = footerInnerHtml;
 bodyTag.appendChild(footer);
 
+//snackbar
+
+var snackbar = document.createElement("p");
+snackbar.setAttribute("id", "snackbar");
+bodyTag.appendChild(snackbar)
+
+
+function showSnackbar(message){
+    var snackbar = document.querySelector("#snackbar");
+    snackbar.classList.add("active");
+    snackbar.innerHTML = message;
+
+    setTimeout(() => {
+        snackbar.classList.remove("active");
+    }, 3000);
+}
+
 if(page=='index.html' || page==''){
 // swiper.js
 const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
@@ -408,7 +425,7 @@ const top5Slider = new Swiper('.top5Slider', {
             <h3 id="bookOfTheMonthName" class="mb-2">${book.title}</h3>
             <p id="bookOfTheMonthAuthor" class="mb-2">${book.author}</p>
             <p id="bookOfTheMonthNameDescription1" class="mb-5">${book.description}</p>
-            <input type='button' value='Add to cart' class='button'/>
+            <input type='button' value='Add to cart' class='button' onclick='showSnackbar("Item added to cart")'/>
         </div>
         <div>
             <img src="${book.src}" alt="${book.alt}" class="img-fluid"/>
@@ -456,10 +473,12 @@ const top5Slider = new Swiper('.top5Slider', {
         checkForm(regexTextArea, formTextArea);
     
         if(formCorrect<4){
+            showSnackbar("Couldn't send a message")
             console.log("neuspesno")
         }
         else{
-            console.log("uspesno")
+            showSnackbar("Message sent succesfully");
+            document.querySelector("#contactForm").reset();
         }
     })
 }
