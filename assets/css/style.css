@@ -29,6 +29,9 @@
 .w-50{
     width: 50%;
 }
+.w-35{
+    width: 35%;
+}
 /* margin and padding classes */
 .mb-5{
     margin-bottom: 5%;
@@ -292,6 +295,16 @@ nav p a{
     transform: translate(-50%, -50%);
     color: var(--white);
 }
+/* swiper */
+/* .headerImagesSwiper .swiper-slide{
+    background-color: orangered;
+    height: 100vh;
+    position: relative;
+} */
+/* .headerImagesSwiper .swiper-slide img{
+    position: absolute;
+    top: 20%; 
+} */
 /* top 5 slider */
 .top5Slider .swiper-button-prev, .top5Slider .swiper-button-next{
     height: 100%;
@@ -342,7 +355,7 @@ nav p a{
 }
 .productCard{
     cursor: pointer;
-    width: 20%;
+    width: 21%;
     margin-bottom: 15% !important;
     /* position: relative; */
 }
