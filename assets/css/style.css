@@ -310,8 +310,8 @@ nav p a{
     height: 100%;
     top: 0;
     margin-top: unset;
-    color: var(--darkerBlue);
-    background: rgba(0, 0, 0, 0.2);
+    color: var(--lighterBlue);
+    background: rgba(255, 255, 255, 0.5);
 }
 .top5Slider .swiper-button-prev{
     left: 0;
@@ -538,3 +538,17 @@ transition: all .3s ease;
     }
 }
 
+/* shopping cart */
+
+#shoppingCart{
+    position: relative;
+}
+.cartQuantity{
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    background-color: var(--red);
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 12px;
+}

@@ -94,7 +94,7 @@ const books = [
     {
         id: 6,
         title: "The South Witch",
-        author: "Adeline Palmerston",
+        author: "Derek Towns",
         description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
         src: "assets/img/books/TheSouthWitch.jpg",
         alt: "Killing Secrects",
@@ -160,6 +160,86 @@ const books = [
         alt: "Killing Secrects",
         price: "768 rsd",
         month: "12",
+    },
+    {
+        id: 13,
+        title: "Theory Of Happiness",
+        author: "Donna Stroupe",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/TheoryOfHappiness.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
+    },
+    {
+        id: 14,
+        title: "Flower Garden",
+        author: "Helene Pequet",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/FlowerGarden.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
+    },
+    {
+        id: 15,
+        title: "Alone In The Wilderness",
+        author: "Estelle Darcy",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/AloneInTheWilderness.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
+    },
+    {
+        id: 16,
+        title: "Reflect",
+        author: "Adeline Palmerston",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/Reflect.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
+    },
+    {
+        id: 17,
+        title: "Greta",
+        author: "Lorna Alvarado",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/Greta.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
+    },
+    {
+        id: 18,
+        title: "Watercolor",
+        author: "Helene Pequet",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/Watercolor.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
+    },
+    {
+        id: 19,
+        title: "The Secret Wooden Door",
+        author: "Rufus Stewart",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/TheSecretWoodenDoor.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "10",
+    },
+    {
+        id: 20,
+        title: "Chinese Myths",
+        author: "Soo Jin Ae",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/ChineseMyths.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "10",
     },
 ]
 
@@ -252,9 +332,28 @@ navLogo.appendChild(navLogoLink);
 
 // shopping cart
 
-const shoppingCart = document.createElement("i");
-shoppingCart.classList.add("fa-solid", "fa-cart-shopping")
+// const shoppingCart = document.createElement("i");
+// shoppingCart.classList.add("fa-solid", "fa-cart-shopping")
+// navigation.appendChild(shoppingCart);
+var shoppingCart = document.createElement("div");
+shoppingCart.setAttribute("id", "shoppingCart")
+shoppingCart.innerHTML = `<a href='shopping-cart.html'><i id="cart" class="fas fa-shopping-cart"></i></a>
+<span class ="cartQuantity">0</span>`;
 navigation.appendChild(shoppingCart);
+
+
+var cartQuantity = document.querySelector(".cartQuantity");
+if(cartQuantity.innerHTML == '0' && page == 'shopping-cart.html'){
+    console.log("mista")
+    document.querySelector(".shoppingCartContent").innerHTML = 'You dont have any products yet'
+}
+
+function addToCart(id){
+    console.log(id)
+    cartQuantity.innerHTML = parseInt(cartQuantity.innerHTML) + 1; 
+}
+
+
 
 // login sign up modal
 
@@ -511,7 +610,8 @@ const top5Slider = new Swiper('.top5Slider', {
             <h3 id="bookOfTheMonthName" class="mb-2">${book.title}</h3>
             <p id="bookOfTheMonthAuthor" class="mb-2">${book.author}</p>
             <p id="bookOfTheMonthNameDescription1" class="mb-5">${book.description}</p>
-            <input type='button' value='Add to cart' class='button' onclick='showSnackbar("Item added to cart")'/>
+            <button class="addToCartButton button" onclick='showSnackbar("Item added to cart"), addToCart(${book.id})'>Add to cart</button>
+            
         </div>
         <div>
             <img src="${book.src}" alt="${book.alt}" class="img-fluid"/>
