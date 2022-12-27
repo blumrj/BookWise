@@ -244,7 +244,7 @@ const books = [
 ]
 
 const navigation = document.getElementsByTagName("nav")[0];
-navigation.classList.add("nav-container", "d-flex", "flex-wrap", "justify-content-between", "align-items-center", "uppercase", "nav-light");
+navigation.classList.add("nav-container", "d-flex", "flex-wrap", "justify-content-between", "align-items-center", "nav-light");
 
 // burger
 const burger = document.createElement("div");
@@ -696,6 +696,10 @@ if(page=="products.html"){
     function openProductPage(){
         window.open("product-page.html", "_self");
     }
+}
+
+if(page=='product-page.html'){
+    // navigation.classList.add("nav-light");
 }
 
 

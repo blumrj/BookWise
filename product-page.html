@@ -1,12 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <!-- shortcut icon -->
+    <link rel="shortcut icon" href=""/>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- swiper.js css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- aos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+    <title>BookWise</title>
 </head>
-<body>
-    
+<body class="light-theme">
+    <header>
+        <nav>
+            <!-- content injected through JavaScript -->
+        </nav>
+    </header>
+    <main>
+        <div class="container d-flex justify-content-between product-item" data-aos="fade-up">
+            <img src="assets/img/books/AloneInTheWilderness.jpg" alt="" class="img-fluid">
+            <div class="w-50 product-item-about">
+                <h2 class="uppercase mb-2">Alone in the Wilderness</h2>
+                <h3 class="mb-5">Estelle Darcy</h3>
+                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur facere quia numquam eaque quis laborum dolorem, delectus, rem esse expedita hic iste ratione nostrum neque asperiores cum? Ex, eius facere?</p>
+                <p class="price mb-2">2.5 USD</p>
+                <button class="addToCartButton button" onclick='showSnackbar("Item added to cart")'>Add to cart</button>
+            </div>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <h3 class="mb-2">Specifications</h3>
+            <table class="product-specifications-table w-50">
+                <tbody>
+                    <tr><td>Category</td><td>Biography</td></tr>
+                    <tr><td>Author</td><td>Estelle Darcy</td></tr>
+                    <tr><td>Publisher</td><td>Publisher123</td></tr>
+                    <tr><td>Pages</td><td>224</td></tr>
+                    <tr><td>Year</td><td>2020</td></tr>
+                    <tr><td>Format</td><td>14 x 20</td></tr>
+                    <tr><td>ISBN</td><td>978-86-80830-71-1</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <h3 class="mb-2">Leave a comment</h3>
+            <div>
+                <p class="mb-2">Log In or Sign Up to leave a comment.</p>
+                <button class=" button" onclick='openLoginSignUpModal()'>Register</button>
+            </div>
+        </div>
+    </main>
+    <!-- swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- aos js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- js -->
+    <script src="assets/js/main.js" type="text/javascript"></script>
 </body>
 </html>
