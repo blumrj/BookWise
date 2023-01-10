@@ -61,18 +61,18 @@
             <form action="" id="contactForm" name="contactForm" class="w-50 d-flex flex-direction-column">
                  <!-- name -->
                  <label for="formName">Name</label>
-                 <input type="text" name="formName" id="formName" class="input-line"   placeholder="Your name" maxlength="20" onblur="checkForm(regexFirstName, formFirstName);"/>
+                 <input type="text" name="formName" id="formName" class="input-line"   placeholder="Your name" maxlength="20" onblur="checkRegex(regexName, this);"/>
                  <!-- last name -->
                  <label for="formLastName">Last name</label>
-                 <input type="text" name="formLastName" id="formLastName" class="input-line"  placeholder="Your last name" onblur="checkForm(regexLastName, formLastName);"/>
+                 <input type="text" name="formLastName" id="formLastName" class="input-line"  placeholder="Your last name" onblur="checkRegex(regexName, this)"/>
                  <!-- email -->
                  <label for="formEmail">E-mail address</label>
-                 <input type="email" name="formEmail" id="formEmail" class="input-line"  placeholder="Your email" onblur="checkForm(regexEmail, formEmail);"/>
+                 <input type="email" name="formEmail" id="formEmail" class="input-line"  placeholder="Your email" onblur="checkRegex(regexEmail, this)"/>
                  <!-- textarea -->
                  <label for="formTextArea">Write a message</label>
-                 <textarea name="formTextArea" id="formTextArea" placeholder="Your message" onblur="checkForm(regexTextArea, formTextArea);"></textarea>
+                 <textarea name="formTextArea" id="formTextArea" placeholder="Your message" onblur="checkRegex(regexTextArea, this);"></textarea>
                  <!-- send message button -->
-                 <input type="button" value="Send"  id="contactFormButton" class="button"/>
+                 <input type="button" value="Send"  id="contactFormButton" class="button" onclick="var messageform = checkMessageForm()"/>
             </form>
         </div>
 
@@ -86,3 +86,4 @@
     <script src="assets/js/main.js" type="text/javascript"></script>
 </body>
 </html>
+

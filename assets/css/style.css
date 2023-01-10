@@ -227,8 +227,8 @@ nav p a{
     border-radius: 15px;
     position: relative;
 }
-#loginSignUpButtonsDiv input{
-    width: 50%;
+#loginSignUpButtonsDiv button{
+    width: 49%;
    padding: 10px 0px;
    background: transparent;
    border: 0;
@@ -238,7 +238,7 @@ nav p a{
    cursor: pointer;
    transition: .3s;
 }
-#loginSignUpButtonsDiv input.active{
+#loginSignUpButtonsDiv button.active{
     background-color: var(--red);
     color: var(--white);
     cursor: auto;
@@ -270,6 +270,16 @@ nav p a{
     position: absolute;
     top: 2%;
     right: 4%;
+ }
+ .togglePassword{
+    position: absolute;
+    right: 2%;
+    bottom: 35%;
+    cursor: pointer;
+    font-size: 14px;
+ }
+ .position-relative{
+    position: relative;
  }
 /* img classes */
 .img-fluid{
@@ -306,15 +316,32 @@ nav p a{
     color: var(--white);
 }
 /* swiper */
-/* .headerImagesSwiper .swiper-slide{
-    background-color: orangered;
+.headerImagesSwiper .swiper-slide{
+    /* background-color: orangered;
     height: 100vh;
     position: relative;
-} */
+    display: flex !important; */
+    padding: 6% 10%;
+}
 /* .headerImagesSwiper .swiper-slide img{
     position: absolute;
     top: 20%; 
 } */
+.headerImagesSwiper{
+    cursor: pointer;
+}
+/* .headerText{
+    margin-left: 30%;
+} */
+#headerSlide1{
+    background-color: var(--lighterBlue);
+}
+#headerSlide2{
+    background-color: var(--pink);
+}
+#headerSlide3{
+    background-color: var(--red);
+}
 /* top 5 slider */
 .top5Slider .swiper-button-prev, .top5Slider .swiper-button-next{
     height: 100%;
@@ -331,11 +358,14 @@ nav p a{
 }
 .top5Slider .swiper-slide{
     position: relative;
-}
-.top5Slider .swiper-slide img{
-    /* box-shadow: 0px 0px 10px -5px rgba(0,0,0,1); */
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
+/* .top5Slider .swiper-slide img{
+    box-shadow: 0px 0px 10px -5px rgba(0,0,0,1);
+    cursor: pointer;
+} */
 .top5Slider .swiper-slide:hover .overlay{
     height: 30%;
 }
@@ -510,6 +540,14 @@ transition: all .3s ease;
     }
 }
 @media screen and (max-width: 576px){
+    .headerImagesSwiper .swiper-slide{
+        padding-top: 10%;
+        height: 100vh;
+        align-items: center;
+    }
+    .headerImagesSwiper .swiper-slide .headerText{
+        margin: 0%;
+    }
     .container{
         margin-top: 15%;
     }
@@ -526,12 +564,12 @@ transition: all .3s ease;
     .mb-5{
         margin-bottom: 10%;
     }
-    .headerImagesSwiper .swiper-slide img{
+    /* .headerImagesSwiper .swiper-slide img{
         object-fit: cover;
       object-position: 6%;
       width: 100%;
       height: 320px;
-    }
+    } */
     .overlay{
         display: none;
     }
@@ -564,12 +602,12 @@ transition: all .3s ease;
     }
 }
 @media screen and (max-width: 376px){
-    .headerImagesSwiper .swiper-slide img{
+    /* .headerImagesSwiper .swiper-slide img{
         object-fit: cover;
       object-position: 6%;
       width: 100%;
       height: 320px;
-    }
+    } */
 }
 
 /* shopping cart */

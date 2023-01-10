@@ -31,7 +31,7 @@ const navPagesAndLinks = [
     },
     {
         id: 5,
-        name: "Login/Sign up",
+        name: "Log In / Sign up",
         path: "#",
     }
 ]
@@ -57,7 +57,7 @@ const books = [
         src: "assets/img/books/TwoSide.jpg",
         alt: "Killing Secrects",
         price: "768 rsd",
-        month: "12",
+        month: "1",
     },
     {
         id: 3,
@@ -360,7 +360,16 @@ function addToCart(id){
 var modal = document.createElement("div");
 modal.setAttribute("id", "loginSignUpModal");
 
-modal.innerHTML = "<span id='closeLoginSignUpModalButton'></span><div id='loginSignUpButtonsDiv'><div id='buttonColor'></div><input type='button' id='loginButton' class='loginSignUpButtons active' value='Log in'/><input type='button' id='signUpButton' class='loginSignUpButtons' value='Sign Up'/></div><div><form id='loginSignUpForm' name='loginSignUpForm'></form></div>";
+modal.innerHTML = `
+<span id='closeLoginSignUpModalButton'></span>
+<div id='loginSignUpButtonsDiv'>
+<div id='buttonColor'></div>
+<button id='loginButton' class='loginSignUpButtons active'>Log in</button>
+<button id='signUpButton' class='loginSignUpButtons'>Sign Up</button>
+</div>
+<div>
+<form id='loginSignUpForm' name='loginSignUpForm'></form>
+</div>`;
 
 bodyTag.appendChild(modal);
 
@@ -405,11 +414,125 @@ function makeLoginSignUpForm(){
     // finding one of the buttons
     var loginSignUpForm = document.querySelector("#loginSignUpForm");
     if(currentlyActiveButton==signUpButton){
-        loginSignUpForm.innerHTML = "<p>Create a new account: </p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextSignUp' name='inputTextSignUp' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordSignUp' name='inputPasswordSignUp' class='input-field' placeholder='Password'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputRepeatedPasswordSignUp' name='inputRepeatedPasswordSignUp' class='input-field' placeholder='Repeat password'/></div><input type='button' name='confirmSignUpButton' id='confirmSignUpButton' class='modalButton button' value='Sign Up'/>";
+        loginSignUpForm.innerHTML =`<p>Create a new account:</p>
+        <div class='formDiv d-flex flex-direction-column'>
+            <input type='email' id='signUpEmail' name='signUpEmail' class='input-field' placeholder='Email' onblur="checkRegex(regexEmail, this)"/>
+        </div>
+        <div class='formDiv d-flex flex-direction-column'>
+            <input type='text' id='signUpUsername' name='signUpUsername' class='input-field' placeholder='Username' onblur="checkRegex(regexUsername, this)"/>
+        </div>
+        <div class='formDiv position-relative d-flex flex-direction-column'>
+            <input type='password' id='signUpPassword' name='signUpPassword' class='input-field' placeholder='Password' onblur="checkRegex(regexPassword, this)"/>
+            <i class="fa-regular fa-eye-slash togglePassword" onclick='changePasswordVisibility(this)'></i>
+        </div>
+        <div class='formDiv position-relative d-flex flex-direction-column'>
+            <input type='password' id='signUpRepeatedPassword' name='signUpRepeatedPassword' class='input-field' placeholder='Repeat password'/>
+            <i class="fa-regular fa-eye-slash togglePassword" onclick='changePasswordVisibility(this)'></i>
+        </div>
+            <input type='button' name='confirmSignUpButton' id='confirmSignUpButton' class='modalButton button' value='Sign Up' onclick='checkSignUpForm(this)'/>`;
     }
     else{
-        loginSignUpForm.innerHTML = "<p>Log into your account:</p><div class='formDiv d-flex flex-direction-column'><input type='text' id='inputTextLogin' name='inputTextLogin' class='input-field' placeholder='Username'/></div><div class='formDiv d-flex flex-direction-column'><input type='password' id='inputPasswordLogin' name='inputPasswordLogin' class='input-field' placeholder='Password'/></div><input type='button' name='confirmLoginButton' id='confirmLoginButton' class='modalButton button' value='Log In'/>";
+        loginSignUpForm.innerHTML = `<p>Log into your account:</p>
+        <div class='formDiv d-flex flex-direction-column'>
+            <input type='text' id='logInUsernameEmail' name='logInUsernameEmail' class='input-field' placeholder='Username' onblur='checkRegex(regexUsername, this)'/>
+        </div>
+        <div class='formDiv position-relative d-flex flex-direction-column'>
+            <input type='password' id='logInPassword' name='logInPassword' class='input-field' placeholder='Password' onblur='checkRegex(regexPassword, this)'/>
+            <i class="fa-regular fa-eye-slash togglePassword" onclick='changePasswordVisibility(this)'></i>
+        </div>
+        <input type='button' name='confirmLoginButton' id='confirmLoginButton' class='modalButton button' value='Log In' onclick='checkLogInForm(this)'/>`;
     }
+}
+
+//password visibility function
+function changePasswordVisibility(element){
+    //getting the password element
+    var passwordElement = element.previousElementSibling;
+
+    //changing the type of the password element
+    var type = passwordElement.getAttribute("type") === "password" ? "text" : "password";
+    passwordElement.setAttribute("type", type);
+
+    //toggle icon
+    const eyeClassVisible = "fa-eye";
+    const eyeClassUnvisible = "fa-eye-slash";
+    element.classList.toggle(eyeClassUnvisible);
+    element.classList.toggle(eyeClassVisible);
+}
+
+//REGEX
+
+//first or Last name
+var regexName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{2,}$/;
+//email
+var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+//textarea
+var regexTextArea = /[0-9a-zA-Z]{5,}/;
+//username
+var regexUsername = /^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
+//password
+//Minimum eight characters, at least one letter and one number
+var regexPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+//check regex function
+function checkRegex(regexPattern, formElement){
+    var regex = regexPattern;
+    var regexMatch = regex.test(formElement.value);
+    if(regexMatch){
+        formElement.style.borderColor = "initial";
+        // formCorrect ++;
+        return 0
+    }
+    else{
+        formElement.style.borderColor = "red";
+        return 1
+    }
+}
+
+function checkLogInForm(element){
+    var form = element.parentElement;
+    
+    var result = checkForm(element);
+
+        if(result == 0){
+            showSnackbar(`Welcome back, `);
+            form.reset();
+            closeLoginSignUpModal();
+        }
+        else{
+            showSnackbar("Log In unsuccessful")
+        }
+}
+
+function checkForm(element){
+    var username = checkRegex(regexUsername, document.querySelector("#logInUsernameEmail"))
+    var password = checkRegex(regexPassword, document.querySelector("#logInPassword"))
+    var result = username + password;
+    if(result == 0){
+        return 0;
+    }
+    else{
+        return 1;
+    }
+}
+
+function checkSignUpForm(element){
+    var form = element.parentElement;
+    
+    var email = checkRegex(regexEmail, document.querySelector("#signUpEmail"))
+    var username = checkRegex(regexUsername, document.querySelector("#signUpUsername"))
+    var password = checkRegex(regexPassword, document.querySelector("#signUpPassword"))
+    var result = email + username + password;
+
+        if(result == 0){
+            showSnackbar(`Welcome, `);
+            form.reset();
+            closeLoginSignUpModal();
+        }
+        else{
+            showSnackbar("Log In unsuccessful")
+        }
+
 }
 //nav scroll and scroll to top
 
@@ -473,7 +596,6 @@ footer.innerHTML = footerInnerHtml;
 bodyTag.appendChild(footer);
 
 //snackbar
-
 var snackbar = document.createElement("p");
 snackbar.setAttribute("id", "snackbar");
 bodyTag.appendChild(snackbar)
@@ -488,6 +610,14 @@ function showSnackbar(message){
         snackbar.classList.remove("active");
     }, 3000);
 }
+
+function openProductPage(){
+    window.open("product-page.html", "_self");
+}
+
+
+
+
 
 if(page=='index.html' || page==''){
 // swiper.js
@@ -517,26 +647,38 @@ const headerImagesSwiper = new Swiper('.headerImagesSwiper', {
   const headerImages = [
     {
         id: 1,
-        path: "assets/img/headerImageAnsweringTheSun.jpg",
-        // path: "assets/img/kn2.jpeg",
-        alt: "Answering The Sun",
+        title: "Chinese Myths",
+        author: "Soo Jin Ae",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/ChineseMyths.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "10",
     },
     {
         id: 2,
-        path: "assets/img/headerImageDangerousIllusion.jpg",
-        // path: "assets/img/books/KillingSecrets.jpg",
-        alt: "Dangerous Illusion",
+        title: "Greta",
+        author: "Lorna Alvarado",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/Greta.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
     },
     {
         id: 3,
-        path: "assets/img/headerImageTheSilverTower.jpg",
-        // path: "assets/img/kn2.jpeg",
-        alt: "The Silver Tower",
+        title: "Leader",
+        author: "Rachelle Beudry",
+        description: "killingSecrets Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate vitae dignissimos dolore expedita architecto, at adipisci maiores fuga qui perspiciatis, a harum eaque consequuntur aliquid repellat, explicabo iure? At, aperiam?Reprehenderit deleniti, odio veniam sint maiores aperiam ullam! Impedit assumenda nulla fugiat dolorem non, odio magni! Libero minima sed natus deleniti quibusdam, magni, fuga magnam asperiores perspiciatis, eligendi placeat ipsam.",
+        src: "assets/img/books/Leader.jpg",
+        alt: "Killing Secrects",
+        price: "768 rsd",
+        month: "12",
     },
   ]
 
   headerImages.forEach(image => {
-    swiper.addSlide(image.id, `<div class="swiper-slide"><img src="${image.path}" alt="${image.alt}"></div>`);
+    swiper.addSlide(image.id, `<div class="swiper-slide d-flex justify-content-between flex-wrap" id="headerSlide${image.id}" onclick="openProductPage()"><img src="${image.src}" alt="${image.alt}" class="img-fluid"><div class="headerText"><h1>${image.title}</h1><p>${image.author}</p></div></div>`);
   })
 
   const recommendedBooks = [
@@ -581,12 +723,20 @@ const top5Slider = new Swiper('.top5Slider', {
       },
       breakpoints: {
         // when window width is >= 640px
+        1200: {
+            slidesPerView: 5,
+            spaceBetween: 40
+          },
         920: {
-          slidesPerView: 5,
+          slidesPerView: 4,
           spaceBetween: 40
         },
         768: {
             slidesPerView: 3,
+          spaceBetween: 40
+        },
+        576: {
+            slidesPerView: 2,
           spaceBetween: 40
         }
       }
@@ -594,7 +744,7 @@ const top5Slider = new Swiper('.top5Slider', {
 
   var top5Slider1 = document.querySelector('.top5Slider').swiper;
   recommendedBooks.forEach(image => {
-    top5Slider1.addSlide(image.id, `<div class="swiper-slide" ><img src="${image.path}" alt="${image.alt}" class="img-fluid"><div class='overlay'><p>See more</p></div></div>`);
+    top5Slider1.addSlide(image.id, `<div class="swiper-slide" onclick="openProductPage()" ><img src="${image.path}" alt="${image.alt}" class="img-fluid"><div class='overlay'><p>See more</p></div></div>`);
   })
 
   // book of the month
@@ -603,7 +753,6 @@ const top5Slider = new Swiper('.top5Slider', {
   window.addEventListener("DOMContentLoaded", () => {
     var date = new Date();
     var todaysMonth = date.getMonth();
-
     books.forEach(book => {
         if(book.month == (todaysMonth + 1)){
             bookOfTheMonthDiv.innerHTML = `<div class="w-50">
@@ -622,53 +771,34 @@ const top5Slider = new Swiper('.top5Slider', {
 
   //contact form
 
-    //name
-    var regexFirstName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{2,}$/;
-    var formFirstName = document.querySelector("#formName");
-    //last name
-    var regexLastName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{2,}$/;
-    var formLastName = document.querySelector("#formLastName");
-    //email
-    var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    var formEmail = document.querySelector("#formEmail");
-    //textarea
-    var regexTextArea = /[0-9a-zA-Z]{5,}/;
-    var formTextArea = document.querySelector("#formTextArea");
+    function checkMessageForm(){
+        var firstName = checkRegex(regexName, document.querySelector("#formName"));
+        var lastName = checkRegex(regexName, document.querySelector("#formLastName"));
+        var email = checkRegex(regexEmail, document.querySelector("#formEmail"));
+        var textArea = checkRegex(regexTextArea, document.querySelector("#formTextArea"));
 
-    //check contact form function
-    formCorrect = 0;
+        var result = firstName + lastName + email + textArea;
 
-    function checkForm(regexPattern, formElement){
-        var regex = regexPattern;
-        var regexMatch = regex.test(formElement.value);
-        if(regexMatch){
-            formElement.style.borderColor = "initial";
-            formCorrect ++;
+        if(result == 0){
+            return 0
         }
         else{
-            formElement.style.borderColor = "red";
+            return 1
         }
     }
 
-    document.getElementById("contactFormButton").addEventListener("click", () =>{
-        formCorrect = 0;
-        
-        checkForm(regexFirstName, formFirstName);
-        checkForm(regexLastName, formLastName);
-        checkForm(regexEmail, formEmail);
-        checkForm(regexTextArea, formTextArea);
-    
-        if(formCorrect<4){
-            showSnackbar("Couldn't send a message")
-            console.log("neuspesno")
-        }
-        else{
+    var contactFormButton = document.querySelector("#contactFormButton");
+    contactFormButton.addEventListener("click", () => {
+        var result = checkMessageForm();
+        if(!result){
             showSnackbar("Message sent succesfully");
             document.querySelector("#contactForm").reset();
         }
+        else{
+            showSnackbar("Couldn't send a message");
+        }
     })
 }
-
 if(page=="products.html"){
     var productCardsDiv = document.querySelector("#productCardsDiv");
 
@@ -693,9 +823,6 @@ if(page=="products.html"){
 
     })
 
-    function openProductPage(){
-        window.open("product-page.html", "_self");
-    }
 }
 
 if(page=='product-page.html'){
